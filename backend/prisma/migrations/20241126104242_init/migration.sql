@@ -1,10 +1,10 @@
--- CreateEnum
+-- CreateEnum for UserType
 CREATE TYPE "UserType" AS ENUM ('admin', 'tailor', 'user');
 
--- CreateEnum
+-- CreateEnum for AppointmentStatus
 CREATE TYPE "AppointmentStatus" AS ENUM ('pending', 'confirmed', 'in_progress', 'canceled', 'rescheduled', 'in_review');
 
--- CreateTable
+-- Create User Table
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "username" TEXT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE "User" (
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
+-- Create Appointments Table
 CREATE TABLE "Appointments" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,19 +33,19 @@ CREATE TABLE "Appointments" (
     CONSTRAINT "Appointments_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
+-- Create Portfolios Table
 CREATE TABLE "Portfolios" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "tailorId" TEXT NOT NULL,
-    "imgUrls" TEXT[],
+    "imgUrls" TEXT[] NOT NULL,
     "description" TEXT NOT NULL,
 
     CONSTRAINT "Portfolios_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
+-- Create Reviews Table
 CREATE TABLE "Reviews" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -57,14 +57,26 @@ CREATE TABLE "Reviews" (
     CONSTRAINT "Reviews_pkey" PRIMARY KEY ("id")
 );
 
--- CreateIndex
+-- Create Index on User Email
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
--- AddForeignKey
-ALTER TABLE "Appointments" ADD CONSTRAINT "Appointments_customerId_fkey" FOREIGN KEY ("customerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Add Foreign Key to Appointments Table with CASCADE on Delete
+ALTER TABLE "Appointments"
+    ADD CONSTRAINT "Appointments_customerId_fkey"
+    FOREIGN KEY ("customerId") REFERENCES "User"("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
 
--- AddForeignKey
-ALTER TABLE "Portfolios" ADD CONSTRAINT "Portfolios_tailorId_fkey" FOREIGN KEY ("tailorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Add Foreign Key to Portfolios Table with CASCADE on Delete
+ALTER TABLE "Portfolios"
+    ADD CONSTRAINT "Portfolios_tailorId_fkey"
+    FOREIGN KEY ("tailorId") REFERENCES "User"("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
 
--- AddForeignKey
-ALTER TABLE "Reviews" ADD CONSTRAINT "Reviews_appointmentId_fkey" FOREIGN KEY ("appointmentId") REFERENCES "Appointments"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+-- Add Foreign Key to Reviews Table with CASCADE on Delete
+ALTER TABLE "Reviews"
+    ADD CONSTRAINT "Reviews_appointmentId_fkey"
+    FOREIGN KEY ("appointmentId") REFERENCES "Appointments"("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE;
