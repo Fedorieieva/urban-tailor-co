@@ -1,0 +1,35 @@
+@import '../../../index.scss';
+
+.userAvatarWrapper {
+  overflow: hidden;
+  border-radius: var(--border-radius-tertiary);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.dynamicSize {
+    width: 88px;
+    height: 88px;
+
+    @include md {
+      width: 120px;
+      height: 120px;
+    }
+
+    @include xl {
+      justify-self: right;
+      width: 130px;
+      height: 130px;
+    }
+  }
+}
+
+.small {
+  width: 40px;
+  height: 40px;
+}
+
+.medium {
+  width: 80px;
+  height: 80px;
+}

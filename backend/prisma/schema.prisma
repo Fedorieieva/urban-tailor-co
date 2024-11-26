@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(uuid())
+  username     String
+  password     String
+  email        String         @unique
+  userType     UserType
+  userAvatar   String?
+  appointments Appointments[]
+  portfolios   Portfolios[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model Appointments {
+  id              String            @id @default(uuid())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  appointmentDate DateTime
+  orderType       String
+  tailoringItems  Int
+  comment         String?
+  status          AppointmentStatus
+  customer        User              @relation(fields: [customerId], references: [id])
+  customerId      String
+  reviews         Reviews[]
+}
+
+model Portfolios {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tailor      User     @relation(fields: [tailorId], references: [id])
+  tailorId    String
+  imgUrls     String[]
+  description String
+}
+
+model Reviews {
+  id            String       @id @default(uuid())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  appointment   Appointments @relation(fields: [appointmentId], references: [id])
+  appointmentId String
+  rating        Int
+  comment       String
+}
+
+enum UserType {
+  admin
+  tailor
+  user
+}
+
+enum AppointmentStatus {
+  pending
+  confirmed
+  in_progress
+  canceled
+  rescheduled
+  in_review
+}

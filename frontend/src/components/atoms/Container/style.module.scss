@@ -1,0 +1,30 @@
+@import '../../../index';
+
+.container {
+  padding: 20px 16px;
+  margin: 0 auto;
+  width: 100%;
+
+  @include md {
+    max-width: 840px;
+    padding: 26px 50px;
+  }
+
+  @include xl {
+    max-width: 1440px;
+    padding: 50px 80px;
+  }
+}
+
+.dark{
+  background-color: var(--color-red-9-850);
+}
+
+.light{
+  background-color: var(--color-red-12);
+}
+
+
+
+
+

@@ -1,0 +1,76 @@
+.bold {
+  font-weight: 700;
+}
+
+.mediumBold {
+  font-weight: 500;
+}
+
+.colored {
+  color: var(--color-orange-43);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.error {
+  color: var(--dark-red);
+}
+
+.heading {
+  font-size: 86px;
+  color: var(--color-yellow-87);
+  font-family: var(--font8);
+}
+
+.text-4xl {
+  font-size: 64px;
+  color: var(--color-yellow-87);
+  font-family: var(--font8);
+}
+
+.text-3xl {
+  font-size: 40px;
+  color: var(--color-red-12);
+  font-family: var(--font8);
+}
+
+.text-2xl {
+  font-size: 30px;
+  font-family: var(--font8);
+  color: var(--color-white-solid);
+}
+
+.text-xl {
+  font-size: 24px;
+  font-family: var(--font8);
+  color: var(--color-white-solid);
+}
+
+.text-md {
+  font-size: 21px;
+  line-height: 125%;
+  font-family: var(--font6);
+  color: var(--color-orange-6);
+}
+
+.text-sm {
+  font-size: 16px;
+  line-height: 170%;
+  color: var(--color-white-solid);
+}
+
+.text-xs {
+  font-size: 14px;
+  line-height: 194%;
+  color: var(--color-white-solid);
+}
+
+.text-xxs {
+  font-size: 11px;
+}

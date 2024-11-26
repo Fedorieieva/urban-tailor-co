@@ -1,0 +1,14 @@
+:root {
+  --font-family: "Inter";
+  --font8: "Italiana";
+  --second-family: "Lato";
+  --font6: "Bodoni Moda";
+}
+
+body {
+  font-family: var(--second-family), sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-red-9-600);
+}
