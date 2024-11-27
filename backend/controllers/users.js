@@ -1,6 +1,5 @@
 const User = require('../models/User.js');
 const jwtUtils = require('../utils/jwt');
-const bcrypt = require('bcryptjs');
 
 exports.loginUser = async (req, res, next) => {
     const {email, password} = req.body;
@@ -42,6 +41,17 @@ exports.getUser = async (req, res, next) => {
         } else {
             res.status(404).json({message: 'User not found'});
         }
+    } catch (error) {
+        next(error);
+    }
+};
+
+exports.getUsersByRole = async (req, res, next) => {
+    const {role} = req.body;
+
+    try {
+        const users = await User.getUsersByRole(role);
+        res.status(200).json(users);
     } catch (error) {
         next(error);
     }

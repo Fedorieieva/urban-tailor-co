@@ -8,6 +8,7 @@ const {
     updateUser,
     deleteUser,
     updatePassword,
+    getUsersByRole,
 } = require('../controllers/users');
 const router = express.Router();
 
@@ -26,6 +27,11 @@ router.post('/', createUser);
 // @desc    GET all existing users
 // @access  Public
 router.get('/', getAllUsers);
+
+// @route   GET /api/users/role
+// @desc    GET all existing users by role
+// @access  Public
+router.get('/role', getUsersByRole);
 
 // @route   GET /api/users/:id
 // @desc    GET existing user
@@ -46,5 +52,6 @@ router.put('/:id/update-password', authMiddleware, updatePassword);
 // @desc    Delete current user
 // @access  Private
 router.delete('/:id', authMiddleware,  deleteUser);
+// router.delete('/:id',  deleteUser);
 
 module.exports = router;

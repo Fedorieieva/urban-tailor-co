@@ -27,6 +27,19 @@ exports.getUserByEmail = async (email) => {
     });
 };
 
+exports.getUsersByRole = async (role) => {
+    const validRoles = ['admin', 'tailor', 'user'];
+    if (!validRoles.includes(role)) {
+        throw new Error(`Invalid role: ${role}`);
+    }
+
+    return prisma.user.findMany({
+        where: {
+            userType: role
+        },
+    });
+};
+
 exports.updateUser = async (id, data) => {
     const {email} = data;
     if (email) {
