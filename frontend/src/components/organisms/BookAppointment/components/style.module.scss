@@ -1,0 +1,85 @@
+.formWrapper {
+  padding: 84px 130px;
+  margin: auto;
+  max-width: max-content;
+  width: 100%;
+  background-color: var(--color-white-solid);
+}
+
+.title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  width: 100%;
+
+  input, select, textarea {
+    border: 2px solid var(--color-grey-border);
+    border-radius: var(--border-radius-secondary);
+    padding: 15px 20px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-orange-43);
+    }
+  }
+}
+
+.appointmentInfo,
+.tailoringInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.date,
+.time,
+.amountOfItems {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tailoringType {
+  position: relative;
+  display: inline-block;
+
+  select {
+    width: 100%;
+    appearance: none;
+    transition: border-color 0.2s ease;
+  }
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.75rem;
+    color: var(--dark-green);
+  }
+
+}
+
+.comment textarea {
+  width: 420px;
+  height: 120px;
+  resize: none;
+}
+
+.error {
+  font-size: 11px;
+  color: var(--color-dark-red);
+}

@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from "react";
 import UserProfile from "../components/organisms/UserProfile/UserProfile.jsx";
-import Post from "../components/organisms/Post/Post.jsx";
-import axios from "axios";
-import {API_URL} from "../config/config.js";
 import {useSelector} from "react-redux";
-import {selectAuthUserToken, selectUser} from "../store/selectors/index.js";
-import UserProfileFeed from "../components/organisms/UserProfileFeed/UserProfileFeed.jsx";
+import {selectUser} from "../store/selectors/index.js";
 import Button from "../components/atoms/Button/Button.jsx";
 import {useParams} from "react-router-dom";
 

@@ -7,6 +7,7 @@ import UserAccount from "../pages/UserAccount.jsx";
 import EditAccount from "../pages/EditAccount.jsx";
 import Home from "../pages/Home.jsx";
 import EditUserPassword from "../pages/EditUserPassword.jsx";
+import Appointments from "@/pages/Appointments.jsx";
 
 const ProtectedRoute = ({children}) => {
     const isUser = Boolean(useSelector(selectAuthUserToken));
@@ -19,52 +20,53 @@ const RootRouter = () => {
     return (
         <>
             <Routes>
-                <Route path="/" element={<AuthPage />} />
+                <Route path="/" element={<Home />} />
+                <Route path='/sign-in' element={<AuthPage />} />
 
                 <Route
-                    path="/home"
+                    path="/appointments"
                     element={
                         <ProtectedRoute>
-                            <Home />
+                            <Appointments />
                         </ProtectedRoute>
                     }
                 />
 
-                <Route
-                    path="/profile"
-                    element={
-                        <ProtectedRoute>
-                            <UserAccount />
-                        </ProtectedRoute>
-                    }
-                />
+                {/*<Route*/}
+                {/*    path="/profile"*/}
+                {/*    element={*/}
+                {/*        <ProtectedRoute>*/}
+                {/*            <UserAccount />*/}
+                {/*        </ProtectedRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
 
-                <Route
-                    path="/profile/:userId"
-                    element={
-                        <ProtectedRoute>
-                            <UserAccount />
-                        </ProtectedRoute>
-                    }
-                />
+                {/*<Route*/}
+                {/*    path="/profile/:userId"*/}
+                {/*    element={*/}
+                {/*        <ProtectedRoute>*/}
+                {/*            <UserAccount />*/}
+                {/*        </ProtectedRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
 
-                <Route
-                    path="/profile/edit"
-                    element={
-                        <ProtectedRoute>
-                            <EditAccount />
-                        </ProtectedRoute>
-                    }
-                />
+                {/*<Route*/}
+                {/*    path="/profile/edit"*/}
+                {/*    element={*/}
+                {/*        <ProtectedRoute>*/}
+                {/*            <EditAccount />*/}
+                {/*        </ProtectedRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
 
-                <Route
-                    path="/profile/edit/password"
-                    element={
-                        <ProtectedRoute>
-                            <EditUserPassword />
-                        </ProtectedRoute>
-                    }
-                />
+                {/*<Route*/}
+                {/*    path="/profile/edit/password"*/}
+                {/*    element={*/}
+                {/*        <ProtectedRoute>*/}
+                {/*            <EditUserPassword />*/}
+                {/*        </ProtectedRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
             </Routes>
         </>
     );

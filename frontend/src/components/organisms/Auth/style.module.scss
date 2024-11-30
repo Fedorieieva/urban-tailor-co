@@ -2,16 +2,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex: 1;
 
   max-width: 450px;
+  //max-height: 580px;
+  //height: 100%;
   border-radius: var(--border-radius-primary);
   box-shadow: var(--form-shadow);
-  margin: 0 auto;
 }
 
 .authTabWrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  margin-bottom: 100px;
+}
+
+.logo {
+  margin-bottom: 60px;
 }
 
 .authForm {

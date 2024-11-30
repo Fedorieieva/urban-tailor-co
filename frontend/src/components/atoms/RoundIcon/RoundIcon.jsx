@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import cn from 'classnames';
 import style from "./style.module.scss";
 
-const UserAvatar = ({src, size = 'large'}) => {
+const RoundIcon = ({src, size = 'large'}) => {
     const avatar = src || './public/images/icons/user.svg';
 
     const avatarClasses = cn(
@@ -22,9 +22,9 @@ const UserAvatar = ({src, size = 'large'}) => {
     );
 }
 
-UserAvatar.propTypes = {
+RoundIcon.propTypes = {
     src: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium', 'large'])
 };
 
-export default UserAvatar;
+export default RoundIcon;

@@ -17,7 +17,10 @@ exports.loginUser = async (req, res, next) => {
 
         const token = `Bearer ${jwtUtils.generateToken(user)}`;
 
-        res.json({token});
+        res.status(200).json({
+            token,
+            id: user.id
+        });
     } catch (error) {
         next(error);
     }
@@ -26,7 +29,8 @@ exports.loginUser = async (req, res, next) => {
 exports.createUser = async (req, res, next) => {
     try {
         const user = await User.createUser(req.body);
-        res.status(201).json(user);
+        const token = `Bearer ${jwtUtils.generateToken(user)}`;
+        res.status(201).json({user, token});
     } catch (error) {
         next(error);
     }

@@ -4,6 +4,7 @@ import SignUpForm from "../../molecules/AuthForms/SignUpForm.jsx";
 import cn from 'classnames';
 import style from './style.module.scss';
 import Button from "../../atoms/Button/Button.jsx";
+import Logo from "@/components/molecules/Logo/Logo.jsx";
 
 const Auth = () => {
     const [activeTab, setActiveTab] = useState('login');
@@ -15,7 +16,7 @@ const Auth = () => {
                     className={cn(style.authTab, activeTab === 'login' ? style.authTabLogin : '')}
                     onClick={() => setActiveTab('login')}
                 >
-                    Log in
+                    Sign in
                 </Button>
                 <Button
                     className={cn(style.authTab, activeTab === 'signup' ? style.authTabSignUp : '')}
@@ -24,6 +25,8 @@ const Auth = () => {
                     Sign Up
                 </Button>
             </div>
+
+            <Logo className={style.logo}/>
 
             <div className={style.authForm}>
                 {activeTab === 'login' && <LoginForm/>}

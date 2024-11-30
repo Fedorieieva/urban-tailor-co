@@ -9,6 +9,7 @@ const {
     deleteAppointment,
     assignAppointmentToTailor,
     getUserAppointments,
+    getTailorAppointments,
 } = require('../controllers/appointments');
 const router = express.Router();
 
@@ -34,9 +35,14 @@ router.get('/status', getAppointmentsByStatus);
 router.get('/:id', getAppointment);
 
 // @route   GET /api/appointments/user/:id
-// @desc    GET existing appointment
+// @desc    GET existing user appointments
 // @access  Public
 router.get('/user/:id', getUserAppointments);
+
+// @route   GET /api/appointments/tailor/:id
+// @desc    GET existing tailor appointments
+// @access  Public
+router.get('/tailor/:id', getTailorAppointments);
 
 // @route   PUT /api/appointments/:id
 // @desc    Update current appointment

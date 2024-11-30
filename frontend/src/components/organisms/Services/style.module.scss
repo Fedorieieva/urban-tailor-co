@@ -1,0 +1,11 @@
+.title {
+  max-width: max-content;
+  margin: 0 auto 70px auto;
+  text-align: center;
+}
+
+.servicesWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+}

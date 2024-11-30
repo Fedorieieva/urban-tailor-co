@@ -3,22 +3,19 @@ const prisma = require('../config/prisma');
 const validStatuses = ['pending', 'confirmed', 'in_progress', 'canceled', 'rescheduled', 'in_review'];
 
 exports.createAppointment = async (data) => {
-    const {customerId, status, appointmentDate, orderType, tailoringItems, comment} = data;
+    const {customerId, appointmentDate, orderType, tailoringItems, comment, appointmentTime} = data;
 
-    if (!customerId || !status || !appointmentDate || !orderType) {
+    if (!customerId|| !appointmentDate || !orderType) {
         throw new Error("Required fields are missing.");
-    }
-
-    if (!validStatuses.includes(status)) {
-        throw new Error("Invalid appointment status.");
     }
 
 
     return prisma.appointments.create({
         data: {
             customerId,
-            status,
+            status: 'pending',
             appointmentDate,
+            appointmentTime,
             orderType,
             tailoringItems,
             comment,
@@ -87,3 +84,11 @@ exports.getAppointmentsByUser = async (userId) => {
         },
     });
 };
+
+exports.getAppointmentsByTailor = async (tailorId) => {
+    return prisma.appointments.findMany({
+        where: {
+            tailorId: String(tailorId),
+        },
+    });
+}

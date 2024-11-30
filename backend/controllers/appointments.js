@@ -124,3 +124,19 @@ exports.getUserAppointments = async(req, res, next) => {
         next(error);
     }
 }
+
+exports.getTailorAppointments = async(req, res, next) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.getUserById(userId);
+        if (!user) {
+            return res.status(404).json({message: 'User not found'});
+        }
+
+        const appointments = await Appointment.getAppointmentsByTailor(userId);
+        res.json(appointments);
+    } catch (error) {
+        next(error);
+    }
+}

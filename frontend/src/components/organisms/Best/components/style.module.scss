@@ -1,0 +1,13 @@
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.text{
+  color: var(--color-yellow-87);
+}

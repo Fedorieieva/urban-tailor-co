@@ -1,0 +1,11 @@
+.title{
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 362px;
+  gap: 15px;
+}

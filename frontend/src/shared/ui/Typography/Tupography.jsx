@@ -15,6 +15,8 @@ const Typography = (props) => {
         colored,
         underline,
         uppercase,
+        fullWidth,
+        goldUnderline,
         isError = false,
         ...restProps
     } = props;
@@ -29,6 +31,8 @@ const Typography = (props) => {
             [styles.underline]: underline,
             [styles.colored]: colored,
             [styles.uppercase]: uppercase,
+            [styles.fullWidth]: fullWidth,
+            [styles.goldUnderline]: goldUnderline,
             [styles.error]: isError
         },
         className

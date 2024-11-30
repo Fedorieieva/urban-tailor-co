@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+}
+
+.contact,
+.headerNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: 10px 0;
+}
+
+.contact {
+  border-bottom: 1px solid var(--color-white--150);
+}
+
+.contactInfo,
+.nav,
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contacts{
+  gap: 5px;
+}

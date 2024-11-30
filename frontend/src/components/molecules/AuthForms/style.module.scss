@@ -1,16 +1,11 @@
 .form {
-  padding: 25px;
+  padding: 25px 50px;
+  width: 100%;
 }
 
 .form,
 .inputsWrapper {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
-}
-
-.inputsWrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
+  gap: 45px;
 }

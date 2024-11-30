@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {actionSetProfileImageSrc, actionSetPostImageSrc} from "../../../store/reducers/uploadedImage.slice.js";
 import PropTypes from "prop-types";
-import Post from "../../organisms/Post/Post.jsx";
 
 const ImageUpload = ({isProfile = false}) => {
     const dispatch = useDispatch();

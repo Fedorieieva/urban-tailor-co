@@ -1,17 +1,14 @@
 import React from "react";
 import {Form, Formik} from "formik";
 import * as yup from 'yup';
-import axios from "axios";
 import InputField from "../../atoms/InputField/InputField.jsx";
 import Button from "../../atoms/Button/Button.jsx";
 import style from './style.module.scss';
-import {API_URL} from "../../../config/config.js";
-import {useNavigate} from "react-router-dom";
+import {useCreateUser} from "../../../hooks/handleUser.js";
 
 const SignUpForm = () => {
-    const navigate = useNavigate();
     const initialValues = {
-        firstName: '',
+        username: '',
         email: '',
         password: ''
     };
@@ -19,24 +16,12 @@ const SignUpForm = () => {
     const isRequiredStr = ' is required!';
 
     const validationSchema = yup.object().shape({
-        firstName: yup.string().required('First name' + isRequiredStr),
+        username: yup.string().required('User name' + isRequiredStr),
         email: yup.string().email('Invalid e-mail format').required('E-mail' + isRequiredStr),
         password: yup.string().min(6, 'Password must consist of at least 6 characters').required('Password' + isRequiredStr)
     });
 
-    const handleSubmit = async (values) => {
-        try {
-            const response = await axios.post(API_URL + '/users', {
-                ...values,
-                isAdmin: false,
-                enabled: false
-            });
-
-            navigate('/home');
-        } catch (error) {
-            console.error('Registration error:', error.response.data);
-        }
-    };
+    const handleSubmit = useCreateUser();
 
     return (
         <Formik
@@ -46,7 +31,7 @@ const SignUpForm = () => {
         >
             <Form className={style.form}>
                 <div className={style.inputsWrapper}>
-                    <InputField name='firstName' placeholder='Full Name'/>
+                    <InputField name='username' placeholder='Your Name'/>
                     <InputField name='email' placeholder='E-mail'/>
                     <InputField name='password' placeholder='Password'/>
                 </div>
@@ -54,7 +39,7 @@ const SignUpForm = () => {
                 <Button
                     type='submit'
                     variant='primary'
-                    isFullWidth={true}
+                    size='large'
                 >
                     Sign Up
                 </Button>

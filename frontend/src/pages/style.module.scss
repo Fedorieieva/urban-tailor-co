@@ -1,6 +1,14 @@
-.editPage {
-  display: flex;
-  flex-direction: column;
+.logInContainer {
+  min-height: 100vh;
+}
 
-  height: 95vh;
+.header {
+  margin-bottom: 150px;
+}
+
+.logInSection {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  align-items: center;
 }

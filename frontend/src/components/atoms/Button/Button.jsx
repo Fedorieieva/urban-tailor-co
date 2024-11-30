@@ -25,6 +25,7 @@ const Button = (props) => {
         style[variant],
         {[style.shadow]: shadow},
         {[style.fullWidth]: isFullWidth},
+        {[style.link]: to},
         className
     );
 
