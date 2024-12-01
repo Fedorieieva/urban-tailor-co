@@ -46,7 +46,7 @@ const LoginForm = () => {
                 </div>
 
                 <Button type='submit' variant='primary' size='large'>
-                    Log In
+                    Sign In
                 </Button>
             </Form>
         </Formik>

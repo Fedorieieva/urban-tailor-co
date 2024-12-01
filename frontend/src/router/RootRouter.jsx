@@ -6,7 +6,6 @@ import AuthPage from "../pages/AuthPage.jsx";
 import UserAccount from "../pages/UserAccount.jsx";
 import EditAccount from "../pages/EditAccount.jsx";
 import Home from "../pages/Home.jsx";
-import EditUserPassword from "../pages/EditUserPassword.jsx";
 import Appointments from "@/pages/Appointments.jsx";
 
 const ProtectedRoute = ({children}) => {
@@ -50,23 +49,14 @@ const RootRouter = () => {
                 {/*    }*/}
                 {/*/>*/}
 
-                {/*<Route*/}
-                {/*    path="/profile/edit"*/}
-                {/*    element={*/}
-                {/*        <ProtectedRoute>*/}
-                {/*            <EditAccount />*/}
-                {/*        </ProtectedRoute>*/}
-                {/*    }*/}
-                {/*/>*/}
-
-                {/*<Route*/}
-                {/*    path="/profile/edit/password"*/}
-                {/*    element={*/}
-                {/*        <ProtectedRoute>*/}
-                {/*            <EditUserPassword />*/}
-                {/*        </ProtectedRoute>*/}
-                {/*    }*/}
-                {/*/>*/}
+                <Route
+                    path="/settings"
+                    element={
+                        <ProtectedRoute>
+                            <EditAccount />
+                        </ProtectedRoute>
+                    }
+                />
             </Routes>
         </>
     );

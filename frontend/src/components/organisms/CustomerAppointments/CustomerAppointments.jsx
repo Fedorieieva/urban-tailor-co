@@ -6,6 +6,7 @@ import {useFetchUserAppointments} from "@/hooks/handleAppointment.js";
 import {useSelector} from "react-redux";
 import {selectUser} from "@/store/selectors/index.js";
 import AppointmentRow from "@/components/organisms/CustomerAppointments/components/AppointmentRow.jsx";
+import AppointmentHeader from "@/components/organisms/CustomerAppointments/components/AppointmentHeader.jsx";
 
 const CustomerAppointments = () => {
     const userId = useSelector(selectUser).id;
@@ -19,6 +20,7 @@ const CustomerAppointments = () => {
                 <SectionTitle mainTitle='your appointments' secondaryTitle='appointments' className={style.title}/>
 
                 <div>
+                    <AppointmentHeader/>
                     {appointments.map((item, id) => (
                         <AppointmentRow appointment={item}/>
                     ))}

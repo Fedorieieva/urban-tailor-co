@@ -24,6 +24,18 @@
   gap: 20px;
 }
 
-.contacts{
+.contacts {
   gap: 5px;
+}
+
+.managingUser {
+  position: relative;
+}
+
+.userPanel {
+  position: absolute;
+  right: 0;
+  padding: 15px;
+  background-color: var(--color-white-solid);
+  border-radius: var(--border-radius-primary);
 }

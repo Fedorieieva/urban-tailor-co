@@ -1,19 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 import EditUserInfo from "../components/molecules/EditUserInfo/EditUserInfo.jsx";
 import Container from "../components/atoms/Container/Container.jsx";
 import ImageUpload from "../components/molecules/ImageUpload/ImageUpload.jsx";
 import style from './style.module.scss';
+import Header from "@/components/organisms/Header/Header.jsx";
+import SectionTitle from "@/components/molecules/SectionTitle/SectionTitle.jsx";
 const EditAccount = () => {
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
-        <Container className={style.editPage}>
-            <ImageUpload isProfile={true}/>
-            {/*<Button onClick={() => setIsModalOpen(true)}>upload new profile photo</Button>*/}
-            <EditUserInfo/>
-
-            {/*{isModalOpen && (<ImageUploadModal onClose={() => setIsModalOpen(false)}/>)}*/}
-
+        <Container dark className={style.editPageContainer}>
+            <Header/>
+            <section className={style.editAccountPage}>
+                <SectionTitle mainTitle='Your profile settings' secondaryTitle='edit your profile' className={style.title}/>
+                <ImageUpload isProfile={true}/>
+                <EditUserInfo/>
+            </section>
         </Container>
     );
 };

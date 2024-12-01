@@ -6,44 +6,39 @@ import style from './style.module.scss';
 const AppointmentRow = ({appointment}) => {
     return (
         <div className={style.row}>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.updatedAt.slice(0, 10)}
                 </Typography>
             </div>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.appointmentDate}
                 </Typography>
             </div>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.appointmentTime}
                 </Typography>
             </div>
-            <div>
-                <Typography>
-                    {appointment.appointmentTime}
-                </Typography>
-            </div>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.orderType}
                 </Typography>
             </div>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.tailoringItems}
                 </Typography>
             </div>
-            <div>
-                <Typography>
+            <div className={style.column}>
+                <Typography variant='text-sm'>
                     {appointment.status}
                 </Typography>
             </div>
         </div>
-    )
-}
+    );
+};
 
 AppointmentRow.propTypes = {
     appointment: PropTypes.object

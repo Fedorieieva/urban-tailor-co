@@ -8,8 +8,12 @@ import Services from "@/components/organisms/Services/Services.jsx";
 import Best from "@/components/organisms/Best/Best.jsx";
 import Offer from "@/components/organisms/Offer/Offer.jsx";
 import Gallery from "@/components/organisms/Gallery/Gallery.jsx";
+import {useSelector} from "react-redux";
+import {selectAuthUserToken} from "@/store/selectors/index.js";
 
 const Home = () => {
+    const userToken = useSelector(selectAuthUserToken);
+
     return (
         <>
             <Banner
@@ -22,7 +26,7 @@ const Home = () => {
                     facilisis. Vitae elementum enim ipsum morbi lacus ipsum semper in elit.
                 </Typography>
 
-                <Button>
+                <Button to={userToken ? '/appointments' : '/sign-in'}>
                     <Typography variant='text-xs'>Book an Appointment</Typography>
                 </Button>
             </Banner>

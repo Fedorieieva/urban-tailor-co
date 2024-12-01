@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from './style.module.scss';
 import SocialMedia from "@/components/molecules/SocialMedia/SocialMedia.jsx";
 import Phone from '../../../../public/images/icons/phone.svg?react';
@@ -10,18 +10,40 @@ import cn from 'classnames';
 import PropTypes from "prop-types";
 import {useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {selectAuthUserToken} from "@/store/selectors/index.js";
+import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 import {actionClearUserData} from "@/store/reducers/auth.reducer.js";
+import RoundIcon from "@/components/atoms/RoundIcon/RoundIcon.jsx";
 
 const Header = ({className}) => {
     const location = useLocation();
     const isSignInPage = location.pathname === '/sign-in';
     const dispatch = useDispatch();
     const userToken = useSelector(selectAuthUserToken);
+    const user = useSelector(selectUser);
+    const [panel, setPanel] = useState(false);
+    const panelRef = useRef();
 
     const handleLogOut = () => {
         dispatch(actionClearUserData())
     }
+
+    const handleClickOutside = (event) => {
+        if (panelRef.current && !panelRef.current.contains(event.target)) {
+            setPanel(false);
+        }
+    }
+
+    useEffect(() => {
+        if (panel) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+    }, [panel]);
 
     return (
         <header className={cn(style.header, className)}>
@@ -46,15 +68,29 @@ const Header = ({className}) => {
                 {!isSignInPage && (
                     <>
                         <nav className={style.nav}>
-                            <Button to='/'>Home</Button>
+                            <Button to='/' variant='transparent'>Home</Button>
 
-                            {userToken && <Button to='/appointments'>Appointments</Button>}
+                            {userToken && <Button to='/appointments' variant='transparent'>Appointments</Button>}
                         </nav>
 
                         {userToken ? (
-                            <Button variant='secondary' onClick={handleLogOut}>
-                                Log Out
-                            </Button>
+                            <div className={style.managingUser} ref={panelRef}>
+                                <Button variant='transparent' onClick={() => setPanel(!panel)}>
+                                    <RoundIcon src={user.userAvatar} size='small'/>
+                                    <Typography>{user.username}</Typography>
+                                </Button>
+
+                                {panel && (
+                                    <div className={style.userPanel}>
+                                        <Button variant='transparent' onClick={handleLogOut}>
+                                            <Typography colored>Log Out</Typography>
+                                        </Button>
+                                        <Button variant='transparent' to='/settings'>
+                                            <Typography colored>Settings</Typography>
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
                         ) : (
                             <Button variant='secondary' to='/sign-in'>
                                 Sign In

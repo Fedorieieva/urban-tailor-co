@@ -3,25 +3,29 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     profileImgSrc: '',
-    postImgSrc: []
+    postImgSrc: [],
+    loading: false
 };
 
 export const uploadImageSlice = createSlice({
     name: 'uploadImage',
     initialState,
     reducers: {
-        actionSetProfileImageSrc: (state, { payload }) => {
+        actionSetProfileImageSrc: (state, {payload}) => {
             state.profileImgSrc = payload;
             console.log('state: ', state.profileImgSrc);
         },
         actionClearProfileImageSrc: (state) => {
             state.profileImgSrc = '';
         },
-        actionSetPostImageSrc: (state, { payload }) => {
+        actionSetPostImageSrc: (state, {payload}) => {
             state.postImgSrc = payload;
         },
         actionClearPostImageSrc: (state) => {
             state.postImgSrc = [];
+        },
+        actionToggleLoadingImg: (state) => {
+            state.loading = !state.loading;
         }
     }
 });
@@ -30,6 +34,7 @@ export const {
     actionSetProfileImageSrc,
     actionClearProfileImageSrc,
     actionSetPostImageSrc,
-    actionClearPostImageSrc
+    actionClearPostImageSrc,
+    actionToggleLoadingImg
 } = uploadImageSlice.actions;
 export default uploadImageSlice.reducer;

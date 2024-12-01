@@ -7,15 +7,14 @@
 .inputsWrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 35px;
 }
 
-
 .editPasswordBtn {
-  background-color: var(--red);
+  background-color: var(--color-dark-red);
 
   &:hover{
-    background-color: var(--dark-red);
+    background-color: var(--color-dark-red);
     transform: scale(1.01);
   }
 }

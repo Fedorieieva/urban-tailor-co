@@ -6,6 +6,7 @@ const user = require('./routes/user');
 const appointment = require('./routes/appointments');
 const portfolio = require('./routes/portfolios');
 const review = require('./routes/reviews');
+const cloudinary = require("./routes/cloudinary");
 require('dotenv').config();
 
 const app = express();
@@ -21,6 +22,7 @@ app.use('/api/users', user);
 app.use('/api/appointments', appointment);
 app.use('/api/portfolios', portfolio);
 app.use('/api/reviews', review);
+app.use('/api/cloudinary', cloudinary);
 
 app.get('/', (req, res) => {
     res.send('Hello, world!');
