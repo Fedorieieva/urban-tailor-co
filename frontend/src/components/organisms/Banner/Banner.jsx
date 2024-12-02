@@ -6,12 +6,12 @@ import Typography from "@/shared/ui/Typography/Tupography.jsx";
 import style from './style.module.scss';
 import cn from 'classnames';
 
-const Banner = ({title, bannerImg, children, fullHeight}) => {
+const Banner = ({title, bannerImg, children, fullHeight, className}) => {
     return (
         <Container bgImage={bannerImg} className={cn({[style.bannerWrapper] : fullHeight})}>
             <Header className={style.header}/>
 
-            <section className={style.banner}>
+            <section className={cn(style.banner, className)}>
                 <Typography variant='heading' uppercase>
                     {title}
                 </Typography>
@@ -24,6 +24,7 @@ const Banner = ({title, bannerImg, children, fullHeight}) => {
 Banner.propTypes = {
     title: PropTypes.string,
     bannerImg: PropTypes.string,
+    className: PropTypes.string,
     children: PropTypes.any,
     fullHeight: PropTypes.bool,
 }

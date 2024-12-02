@@ -1,0 +1,15 @@
+.form {
+  padding: 25px 50px;
+  width: 500px;
+  background: var(--gradient);
+  border-radius: var(--border-radius-primary);
+  box-shadow: var(--form-shadow);
+}
+
+.form,
+.inputsWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+

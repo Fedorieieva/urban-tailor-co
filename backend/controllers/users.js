@@ -28,6 +28,7 @@ exports.loginUser = async (req, res, next) => {
 
 exports.createUser = async (req, res, next) => {
     try {
+        console.log(req.body);
         const user = await User.createUser(req.body);
         const token = `Bearer ${jwtUtils.generateToken(user)}`;
         res.status(201).json({user, token});
@@ -51,7 +52,7 @@ exports.getUser = async (req, res, next) => {
 };
 
 exports.getUsersByRole = async (req, res, next) => {
-    const {role} = req.body;
+    const role = req.params.role;
 
     try {
         const users = await User.getUsersByRole(role);

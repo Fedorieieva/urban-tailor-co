@@ -28,10 +28,10 @@ router.post('/', createUser);
 // @access  Public
 router.get('/', getAllUsers);
 
-// @route   GET /api/users/role
+// @route   GET /api/users/role/:role
 // @desc    GET all existing users by role
 // @access  Public
-router.get('/role', getUsersByRole);
+router.get('/role/:role', getUsersByRole);
 
 // @route   GET /api/users/:id
 // @desc    GET existing user

@@ -23,3 +23,36 @@
     text-transform: uppercase;
   }
 }
+
+
+.selectInput {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  select {
+    width: 100%;
+    border: 2px solid var(--color-orange-43);
+    border-radius: var(--border-radius-secondary);
+    padding: 10px;
+    appearance: none;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-orange-43--hover);
+      box-shadow: var(--form-shadow);
+    }
+  }
+
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.75rem;
+    color: var(--dark-green);
+  }
+}

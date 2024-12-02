@@ -1,15 +1,12 @@
-.bannerWrapper{
-  height: 100vh;
-}
-
-.header {
-  margin-bottom: 150px;
+.bannerWrapper {
+  min-height: 100vh;
+  display: grid;
 }
 
 .banner {
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
-  margin: 0 auto 150px auto;
+  margin: auto;
 
   display: flex;
   flex-direction: column;

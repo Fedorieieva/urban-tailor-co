@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 import {actionClearUserData} from "@/store/reducers/auth.reducer.js";
 import RoundIcon from "@/components/atoms/RoundIcon/RoundIcon.jsx";
+import UserHeader from "@/components/molecules/UserHeader/UserHeader.jsx";
 
 const Header = ({className}) => {
     const location = useLocation();
@@ -71,22 +72,28 @@ const Header = ({className}) => {
                             <Button to='/' variant='transparent'>Home</Button>
 
                             {userToken && <Button to='/appointments' variant='transparent'>Appointments</Button>}
+                            {userToken && user.userType === 'admin' && (
+                                <>
+                                    <Button to='/create-user' variant='transparent'>Create User</Button>
+                                    <Button to='/all-users' variant='transparent'>Users</Button>
+                                </>
+
+                            )}
                         </nav>
 
                         {userToken ? (
                             <div className={style.managingUser} ref={panelRef}>
                                 <Button variant='transparent' onClick={() => setPanel(!panel)}>
-                                    <RoundIcon src={user.userAvatar} size='small'/>
-                                    <Typography>{user.username}</Typography>
+                                    <UserHeader userAvatar={user.userAvatar} username={user.username}/>
                                 </Button>
 
                                 {panel && (
                                     <div className={style.userPanel}>
-                                        <Button variant='transparent' onClick={handleLogOut}>
-                                            <Typography colored>Log Out</Typography>
-                                        </Button>
                                         <Button variant='transparent' to='/settings'>
                                             <Typography colored>Settings</Typography>
+                                        </Button>
+                                        <Button variant='transparent' onClick={handleLogOut}>
+                                            <Typography colored>Log Out</Typography>
                                         </Button>
                                     </div>
                                 )}

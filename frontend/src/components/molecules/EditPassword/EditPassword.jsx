@@ -3,16 +3,10 @@ import {Form, Formik} from "formik";
 import style from "./style.module.scss";
 import InputField from "../../atoms/InputField/InputField.jsx";
 import Button from "../../atoms/Button/Button.jsx";
-import {useSelector} from "react-redux";
-import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 import * as yup from "yup";
-import axios from "axios";
-import {API_URL} from "@/config/config.js";
+import {useEditUserPassword} from "@/hooks/handleUser.js";
 
 const EditPassword = () => {
-    const userToken = useSelector(selectAuthUserToken);
-    const userId = useSelector(selectUser).id;
-
     const initialValues = {
         currentPassword: '',
         newPassword: '',
@@ -23,24 +17,7 @@ const EditPassword = () => {
         newPassword: yup.string().required('Your new password is required'),
     });
 
-    const handleSubmit = async (values, {resetForm}) => {
-        try {
-            const response = await axios.put(
-                `${API_URL}/users/${userId}/update-password`,
-                values,
-                {
-                    headers: {
-                        Authorization: `${userToken}`
-                    }
-                }
-            );
-
-            console.log('User password updated successfully:', response.data);
-            resetForm();
-        } catch (error) {
-            console.error('An error occurred while editing user password:', error.response?.data || error.message);
-        }
-    }
+    const handleSubmit = useEditUserPassword();
 
     return (
         <section>

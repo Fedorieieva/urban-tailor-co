@@ -1,29 +1,35 @@
 import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {API_URL} from "../config/config.js";
+import {useDeleteImgFromCloudinary} from "./handleCloudinary.js";
 import {actionSetUserData, actionSetUserToken, actionUserLoader} from "../store/reducers/auth.reducer.js";
 import {useNavigate} from "react-router-dom";
+import {selectAuthUserToken, selectUploadedProfileImage, selectUser} from "@/store/selectors/index.js";
 
-export const useCreateUser = () => {
+export const useCreateUser = (isAdminCreating = false) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    return async (values) => {
+    return async (values, {resetForm}) => {
         try {
-            console.log(values);
-
-            const response = await axios.post(`${API_URL}/users`, {
-                password: values.password,
-                email: values.email,
-                username: values.username,
-                userType: "user",
-            });
+            const response = await axios.post(`${API_URL}/users`,
+                {
+                    password: values.password,
+                    email: values.email,
+                    username: values.username,
+                    userType: values.userType || "user",
+                }
+            );
 
             console.log('User created successfully:', response.data);
-            dispatch(actionSetUserData(response.data.user));
-            dispatch(actionSetUserToken(response.data.token));
-            navigate('/appointments');
+            resetForm();
+
+            if (!isAdminCreating) {
+                dispatch(actionSetUserData(response.data.user));
+                dispatch(actionSetUserToken(response.data.token));
+                navigate('/appointments');
+            }
         } catch (error) {
             console.error('Registration error:', error.response.data);
         }
@@ -94,3 +100,93 @@ export const useFetchUser = (userId) => {
     return user;
 };
 
+export const useEditUserInfo = () => {
+    const dispatch = useDispatch();
+    const userToken = useSelector(selectAuthUserToken);
+    const userId = useSelector(selectUser).id;
+    const userUploadedImg = useSelector(selectUploadedProfileImage);
+
+    return async (values, {resetForm}) => {
+        const oldAvatarUrl = values.userAvatar;
+        const newAvatarUrl = userUploadedImg || values.userAvatar;
+
+        const newData = {
+            ...values,
+            userAvatar: userUploadedImg || values.userAvatar
+        };
+
+        try {
+            const response = await axios.put(
+                `${API_URL}/users/${userId}`,
+                newData,
+                {
+                    headers: {
+                        Authorization: `${userToken}`
+                    }
+                }
+            );
+
+            console.log("Profile updated successfully:", response.data);
+            dispatch(actionSetUserData(response.data));
+
+            if (oldAvatarUrl && oldAvatarUrl !== newAvatarUrl) {
+                await useDeleteImgFromCloudinary(oldAvatarUrl, userToken);
+            }
+
+            resetForm({values: response.data});
+        } catch (error) {
+            console.error('An error occurred while editing profile:', error.response?.data || error.message);
+        }
+    }
+};
+
+export const useEditUserPassword = () => {
+    const userToken = useSelector(selectAuthUserToken);
+    const userId = useSelector(selectUser).id;
+
+    return async (values, {resetForm}) => {
+        try {
+            const response = await axios.put(
+                `${API_URL}/users/${userId}/update-password`,
+                values,
+                {
+                    headers: {
+                        Authorization: `${userToken}`
+                    }
+                }
+            );
+
+            console.log('User password updated successfully:', response.data);
+            resetForm();
+        } catch (error) {
+            console.error('An error occurred while editing user password:', error.response?.data || error.message);
+        }
+    }
+};
+
+export const useFetchUsersByRole = (role) => {
+    const [users, setUsers] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        if (!role) {
+            setUsers([]);
+            return;
+        }
+
+        const getAllUsers = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/users/role/${role}`);
+                setUsers(response.data);
+            } catch (error) {
+                setError(error.response?.data || error.message);
+                console.error("Error fetching users:", error.response?.data || error.message);
+            }
+        };
+
+        getAllUsers();
+    }, [role]); // Add role as a dependency
+
+    console.log(users);
+    return users;
+};
