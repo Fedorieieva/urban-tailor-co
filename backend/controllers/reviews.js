@@ -94,10 +94,12 @@ exports.getReviewById = async (req, res, next) => {
 };
 
 exports.getAllReviews = async (req, res, next) => {
-    try {
-        const reviews = await Review.getAllReviews();
+    const {page = 1, limit = 10} = req.query;
 
-        res.status(200).json(reviews);
+    try {
+        const {total, reviews} = await Review.getAllReviews(Number(page), Number(limit));
+
+        res.status(200).json({total, reviews});
     } catch (error) {
         next(error);
     }
@@ -105,6 +107,7 @@ exports.getAllReviews = async (req, res, next) => {
 
 exports.getReviewsByUserId = async (req, res, next) => {
     const userId = req.params.id;
+    const {page = 1, limit = 10} = req.query;
 
     try {
         const user = await User.getUserById(userId);
@@ -112,12 +115,12 @@ exports.getReviewsByUserId = async (req, res, next) => {
             return res.status(404).json({message: 'User not found'});
         }
 
-        const reviews = await Review.getAllReviews(userId);
+        const {total, reviews} = await Review.getUserReviews(userId, Number(page), Number(limit));
         if (reviews.length === 0) {
-            return res.status(404).json({ message: 'No reviews found for the given user ID' });
+            return res.status(404).json({message: 'No reviews found for the given user ID'});
         }
 
-        res.status(200).json(reviews);
+        res.status(200).json({total, reviews});
     } catch (error) {
         next(error);
     }

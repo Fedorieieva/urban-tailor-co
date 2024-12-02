@@ -106,7 +106,7 @@ const AppointmentForm = ({className}) => {
                         </div>
 
                         <Button type="submit" isFullWidth>
-                            Book an Appointment
+                            <Typography variant='text-xs' bold>Book an Appointment</Typography>
                         </Button>
                     </Form>
                 )}

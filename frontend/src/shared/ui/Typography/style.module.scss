@@ -64,8 +64,16 @@
   color: var(--color-orange-43);
 }
 
+.black{
+  color: var(--color-black-solid);
+}
+
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .underline {

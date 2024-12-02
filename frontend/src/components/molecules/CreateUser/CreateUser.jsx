@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import {useCreateUser} from "@/hooks/handleUser.js";
 import Button from "@/components/atoms/Button/Button.jsx";
 import {InputField, SelectField} from "@/components/atoms/InputField/index.js";
+import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const CreateUser = () => {
     const options = [
@@ -50,8 +51,8 @@ const CreateUser = () => {
                         <InputField name='password' placeholder='Enter password'/>
                     </div>
 
-                    <Button type='submit' size='large'>
-                        Create user
+                    <Button type='submit'>
+                        <Typography variant='text-xs' bold uppercase>Create user</Typography>
                     </Button>
                 </Form>
             </Formik>

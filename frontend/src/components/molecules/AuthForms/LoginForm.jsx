@@ -6,6 +6,7 @@ import Button from "../../atoms/Button/Button.jsx";
 import style from './style.module.scss';
 import {useNavigate} from "react-router-dom";
 import {useLogInUser} from "../../../hooks/handleUser.js";
+import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const LoginForm = () => {
     const {fetchAuth} = useLogInUser();
@@ -46,7 +47,7 @@ const LoginForm = () => {
                 </div>
 
                 <Button type='submit' variant='primary' size='large'>
-                    Sign In
+                    <Typography mediumBold uppercase>Sign In</Typography>
                 </Button>
             </Form>
         </Formik>

@@ -38,15 +38,22 @@ export const useMakeAppointment = () => {
     }
 }
 
-export const useFetchUserAppointments = (userId) => {
+export const useFetchUserAppointments = (userId, page = 1, limit = 10, sortBy = 'orderType') => {
     const [appointments, setAppointments] = useState([]);
+    const [total, setTotal] = useState();
+    const params = {
+        page, limit, sortBy
+    }
 
     useEffect(() => {
         const getUserAppointments = async () => {
             try {
-                const response = await axios.get(`${API_URL}/appointments/user/${userId}`);
-                setAppointments(response.data);
-                console.log("Got user appointments:", response.data);
+                const response = await axios.get(`${API_URL}/appointments/user/${userId}`, {
+                    params,
+                });
+                setAppointments(response.data.appointments);
+                setTotal(response.data.total);
+                console.log("Got user appointments:", response.data.appointments);
             } catch (error) {
                 console.error(
                     "An error occurred while getting user appointments:",
@@ -58,8 +65,9 @@ export const useFetchUserAppointments = (userId) => {
         if (userId) {
             getUserAppointments();
         }
-    }, [userId]);
+    }, [userId, page, limit, sortBy]);
 
-    return appointments;
+    return {appointments, total};
 };
+
 

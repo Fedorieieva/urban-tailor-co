@@ -5,6 +5,7 @@ import InputField from "../../atoms/InputField/InputField.jsx";
 import Button from "../../atoms/Button/Button.jsx";
 import style from './style.module.scss';
 import {useCreateUser} from "../../../hooks/handleUser.js";
+import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const SignUpForm = () => {
     const initialValues = {
@@ -41,7 +42,7 @@ const SignUpForm = () => {
                     variant='primary'
                     size='large'
                 >
-                    Sign Up
+                    <Typography mediumBold uppercase>Sign Up</Typography>
                 </Button>
             </Form>
         </Formik>

@@ -6,7 +6,7 @@ import SectionTitle from "@/components/molecules/SectionTitle/SectionTitle.jsx";
 
 const BookAppointment = () => {
     return (
-        <Container dark>
+        <Container light>
             <section className={style.bookingSection}>
                 <SectionTitle mainTitle='Book your appointment' secondaryTitle='booking' isCentered className={style.title}/>
                 <div className={style.imgWrapper}>

@@ -25,17 +25,33 @@ exports.updatePortfolio = async (portfolioId, data) => {
     });
 };
 
-exports.getTailorPortfolio = async (tailorId) => {
-    return prisma.portfolios.findMany({
-        where: {
-            tailorId: String(tailorId),
-        }
-    });
+exports.getTailorPortfolio = async (tailorId, page = 1, limit = 10) => {
+    const skip = (page - 1) * limit;
+
+    const [portfolios, total] = await Promise.all([
+        prisma.portfolios.findMany({
+            where: {
+                tailorId: String(tailorId),
+            },
+            skip,
+            take: limit
+        }),
+        prisma.portfolios.count({where: {tailorId: String(tailorId)}}),
+    ]);
+
+    return {total, portfolios};
 };
 
-exports.getAllPortfolios = async () => {
-    return prisma.portfolios.findMany();
-}
+exports.getAllPortfolios = async (page = 1, limit = 10) => {
+    const skip = (page - 1) * limit;
+
+    const [portfolios, total] = await Promise.all([
+        prisma.portfolios.findMany({skip, take: limit}),
+        prisma.portfolios.count(),
+    ]);
+
+    return {total, portfolios};
+};
 
 exports.deletePortfolio = async (id) => {
     return prisma.portfolios.delete({

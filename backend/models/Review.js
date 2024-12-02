@@ -23,8 +23,15 @@ exports.deleteReview = async (reviewId) => {
     });
 };
 
-exports.getAllReviews = async () => {
-    return prisma.reviews.findMany();
+exports.getAllReviews = async (page = 1, limit = 10) => {
+    const skip = (page - 1) * limit;
+
+    const [reviews, total] = await Promise.all([
+        prisma.reviews.findMany({skip, take: limit}),
+        prisma.reviews.count(),
+    ]);
+
+    return {total, reviews};
 };
 
 exports.getReviewByAppointmentId = async (appointmentId) => {
@@ -43,17 +50,32 @@ exports.getReviewById = async (id) => {
     });
 };
 
-exports.getUserReviews = async (userId) => {
-    return prisma.reviews.findMany({
-        where: {
-            appointment: {
-                customerId: String(userId),
+exports.getUserReviews = async (userId, page = 1, limit = 10) => {
+    const skip = (page - 1) * limit;
+
+    const [reviews, total] = await Promise.all([
+        prisma.reviews.findMany({
+            where: {
+                appointment: {
+                    customerId: String(userId),
+                },
             },
-        },
-        include: {
-            appointment: true
-        },
-    });
+            include: {
+                appointment: true
+            },
+            skip,
+            take: limit
+        }),
+        prisma.reviews.count({
+            where: {
+                appointment: {
+                    customerId: String(userId),
+                },
+            }
+        }),
+    ]);
+
+    return {total, reviews};
 };
 
 exports.reviewExists = async (appointmentId) => {

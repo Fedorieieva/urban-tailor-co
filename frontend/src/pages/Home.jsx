@@ -27,7 +27,7 @@ const Home = () => {
                 </Typography>
 
                 <Button to={userToken ? '/appointments' : '/sign-in'}>
-                    <Typography variant='text-xs'>Book an Appointment</Typography>
+                    <Typography variant='text-xs' bold>Book an Appointment</Typography>
                 </Button>
             </Banner>
 

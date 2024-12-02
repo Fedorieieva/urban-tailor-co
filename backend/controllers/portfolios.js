@@ -20,6 +20,7 @@ exports.createPortfolio = async (req, res, next) => {
 
 exports.getTailorPortfolio = async (req, res, next) => {
     const tailorId = req.params.id;
+    const {page = 1, limit = 10} = req.query;
 
     try {
         const user = await User.getUserById(tailorId);
@@ -28,8 +29,8 @@ exports.getTailorPortfolio = async (req, res, next) => {
             return res.status(404).json({message: 'User not found'});
         }
 
-        const portfolios = await Portfolio.getTailorPortfolio(tailorId);
-        res.json(portfolios);
+        const {total, portfolios} = await Portfolio.getTailorPortfolio(tailorId, Number(page), Number(limit));
+        res.json({total, portfolios});
     } catch (error) {
         next(error);
     }
@@ -52,9 +53,11 @@ exports.getPortfolio = async (req, res, next) => {
 }
 
 exports.getAllPortfolios = async (req, res, next) => {
+    const {page = 1, limit = 10} = req.query;
+
     try {
-        const portfolios = await Portfolio.getAllPortfolios();
-        res.json(portfolios);
+        const {total, portfolios} = await Portfolio.getAllPortfolios(Number(page), Number(limit));
+        res.json({total, portfolios});
     } catch (error) {
         next(error);
     }

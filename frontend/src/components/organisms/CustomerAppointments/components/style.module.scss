@@ -1,6 +1,6 @@
 .row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
 
   padding: 12px 0;
   background-color: var(--color-red-9-850);
@@ -16,12 +16,27 @@
 .header {
   background-color: var(--color-white-solid);
   border: none;
+  color: var(--color-black-solid) !important;
 
   .column {
+    display: flex;
+    align-items: center;
+
     border: none;
 
-    > * {
-      color: var(--color-black-solid) !important;
+    button:hover{
+      transform: scale(1.0);
     }
   }
+}
+
+.list {
+  margin-bottom: 35px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
