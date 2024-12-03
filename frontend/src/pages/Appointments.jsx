@@ -29,7 +29,7 @@ const Appointments = () => {
                         onClick={() => setTab('appointments')}
                         className={cn({[style.tabsActive] : tab === 'appointments'})}
                     >
-                        your appointments
+                        my appointments
                     </Button>
                 </div>
             </Container>

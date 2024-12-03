@@ -14,7 +14,7 @@ const CustomerAppointments = () => {
             <Container bgImage='../../../../public/images/appointmentsbg2.png' mask={false}>
                 <SectionTitle mainTitle='your appointments' secondaryTitle='appointments' className={style.title}/>
 
-                <AppointmentsList userId={userId}/>
+                <AppointmentsList userId={userId} review/>
             </Container>
         </Container>
     );

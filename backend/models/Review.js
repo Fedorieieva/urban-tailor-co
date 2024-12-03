@@ -80,6 +80,6 @@ exports.getUserReviews = async (userId, page = 1, limit = 10) => {
 
 exports.reviewExists = async (appointmentId) => {
     return prisma.reviews.findFirst({
-        where: { appointmentId },
+        where: {appointmentId},
     });
 }

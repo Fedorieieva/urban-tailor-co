@@ -69,7 +69,7 @@ exports.getReviewByAppointmentId = async (req, res, next) => {
 
         const review = await Review.getReviewByAppointmentId(appointmentId);
         if (!review) {
-            return res.status(404).json({message: 'Review not found for the given appointment ID'});
+            return res.status(204).json({});
         }
 
         res.status(200).json(review);

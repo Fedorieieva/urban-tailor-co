@@ -6,7 +6,7 @@ import style from './style.module.scss';
 
 const Container = ({children, className, light = false, dark = false, bgImage, mask = true}) => {
     const wrapperStyle = bgImage ? {backgroundImage: `url(${bgImage})`} : {};
-    const containerStyle = bgImage ? {zIndex: 1} : {};
+    const containerStyle = mask ? {zIndex: 1} : {};
 
     return (
         <div className={cn(style.wrapper, {[style.light]: light},

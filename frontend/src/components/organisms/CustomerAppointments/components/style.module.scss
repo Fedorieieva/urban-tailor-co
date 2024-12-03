@@ -1,16 +1,17 @@
 .row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr;
 
   padding: 12px 0;
+  width: 100%;
   background-color: var(--color-red-9-850);
   border-bottom: 1px solid var(--color-orange-43);
 }
 
 .column {
-  padding-left: 10px;
   border-left: 1px solid var(--color-red-12);
   border-right: 1px solid var(--color-red-12);
+  padding-left: 12px;
 }
 
 .header {
@@ -21,11 +22,14 @@
   .column {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     border: none;
 
-    button:hover{
+    button:hover {
       transform: scale(1.0);
+      //border-bottom: 1px solid var(--color-orange-43);
+      //border-radius: 0;
     }
   }
 }
@@ -34,9 +38,68 @@
   margin-bottom: 35px;
 }
 
+.appointmentBtn {
+  padding: 0;
+  width: 100%;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
+}
+
+.modal {
+  padding: 35px;
+  background-color: var(--color-white-solid);
+  border-radius: var(--border-radius-secondary);
+
+  &Header {
+    margin-bottom: 40px;
+  }
+
+  &Close {
+    margin-left: auto;
+  }
+
+  &Body {
+    padding: 0 40px;
+  }
+
+  &Title{
+    margin-bottom: 25px;
+  }
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  width: 100%;
+
+  input, select, textarea {
+    border: 2px solid var(--color-grey-border) !important;
+    border-radius: var(--border-radius-secondary) !important;
+    padding: 15px 20px !important;
+    margin: auto;
+    width: 87%;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-orange-43);
+    }
+  }
+}
+
+.comment textarea {
+  height: 120px;
+  resize: none;
+}
+
+.error {
+  font-size: 11px;
+  color: var(--color-dark-red);
 }

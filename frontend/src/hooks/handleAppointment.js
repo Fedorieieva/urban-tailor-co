@@ -34,7 +34,6 @@ export const useMakeAppointment = () => {
                 error.response?.data || error.message
             );
         }
-
     }
 }
 

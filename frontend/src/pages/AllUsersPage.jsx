@@ -13,18 +13,18 @@ const AllUsersPage = () => {
         <Container dark className={style.usersPage}>
             <Header/>
 
-            <div className={style.usersPageTabs}>
+            <div className={style.tabs}>
                 <Button
                     variant='transparent'
                     onClick={() => setTab('customer')}
-                    className={cn({[style.usersPageTabsActive] : tab === 'customer'})}
+                    className={cn({[style.tabsActive] : tab === 'customer'})}
                 >
                     customer users
                 </Button>
                 <Button
                     variant='transparent'
                     onClick={() => setTab('tailor')}
-                    className={cn({[style.usersPageTabsActive] : tab === 'tailor'})}
+                    className={cn({[style.tabsActive] : tab === 'tailor'})}
                 >
                     tailor users
                 </Button>
