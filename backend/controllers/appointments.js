@@ -19,8 +19,7 @@ exports.createAppointment = async (req, res, next) => {
 }
 
 exports.getAppointmentsByStatus = async (req, res, next) => {
-    const {status} = req.body;
-    const {page = 1, limit = 10, sortBy} = req.query;
+    const {status, page = 1, limit = 10, sortBy} = req.query;
 
     try {
         const {total, appointments} = await Appointment.getAppointmentByStatus(
@@ -143,8 +142,6 @@ exports.getUserAppointments = async (req, res, next) => {
 exports.getTailorAppointments = async (req, res, next) => {
     const userId = req.params.id;
     const {page = 1, limit = 10, sortBy} = req.query;
-
-    console.log(sortBy);
 
     try {
         const user = await User.getUserById(userId);

@@ -38,6 +38,7 @@ export const useCreateUser = (isAdminCreating = false) => {
 
 export const useLogInUser = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const fetchAuth = async (credentials) => {
         dispatch(actionUserLoader(true));
@@ -67,6 +68,14 @@ export const useLogInUser = () => {
             if (response.data) {
                 const user = response.data;
                 dispatch(actionSetUserData(user));
+
+                if (user.userType === 'user') {
+                    navigate('/appointments');
+                } else if (user.userType === 'tailor') {
+                    navigate('/tailor-appointments');
+                } else if (user.userType === 'admin') {
+                    navigate('/');
+                }
             }
         } catch (error) {
             console.error("Error fetching user info:", error.response ? error.response.data : error.message);

@@ -11,7 +11,11 @@
 .column {
   border-left: 1px solid var(--color-red-12);
   border-right: 1px solid var(--color-red-12);
-  padding-left: 12px;
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header {
@@ -20,9 +24,9 @@
   color: var(--color-black-solid) !important;
 
   .column {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
 
     border: none;
 
@@ -38,6 +42,11 @@
   margin-bottom: 35px;
 }
 
+//.pending {
+//  display: flex;
+//  gap: 10px;
+//}
+
 .appointmentBtn {
   padding: 0;
   width: 100%;
@@ -52,6 +61,8 @@
 
 .modal {
   padding: 35px;
+  max-width: 800px;
+  width: 100%;
   background-color: var(--color-white-solid);
   border-radius: var(--border-radius-secondary);
 
@@ -67,10 +78,14 @@
     padding: 0 40px;
   }
 
-  &Title{
+  &Title {
     margin-bottom: 25px;
+    text-align: center;
   }
 
+  &Text{
+    margin-bottom: 35px;
+  }
 }
 
 .form {

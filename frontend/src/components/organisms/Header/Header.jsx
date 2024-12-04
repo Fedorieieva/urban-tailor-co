@@ -71,13 +71,19 @@ const Header = ({className}) => {
                         <nav className={style.nav}>
                             <Button to='/' variant='transparent'>Home</Button>
 
-                            {userToken && <Button to='/appointments' variant='transparent'>Appointments</Button>}
+                            {userToken && user.userType === 'user' && <Button to='/appointments' variant='transparent'>Appointments</Button>}
+
                             {userToken && user.userType === 'admin' && (
                                 <>
                                     <Button to='/create-user' variant='transparent'>Create User</Button>
                                     <Button to='/all-users' variant='transparent'>Users</Button>
                                 </>
+                            )}
 
+                            {userToken && user.userType === 'tailor' && (
+                                <>
+                                    <Button to='/tailor-appointments' variant='transparent'>Appointments</Button>
+                                </>
                             )}
                         </nav>
 

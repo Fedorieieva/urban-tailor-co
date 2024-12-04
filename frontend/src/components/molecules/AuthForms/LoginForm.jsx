@@ -10,7 +10,6 @@ import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const LoginForm = () => {
     const {fetchAuth} = useLogInUser();
-    const navigate = useNavigate();
 
     const initialValues = {
         email: '',
@@ -22,15 +21,12 @@ const LoginForm = () => {
         password: yup.string().required('Required'),
     });
 
-    const handleSubmit = async (values, {setSubmitting, setErrors}) => {
+    const handleSubmit = async (values, {setErrors}) => {
         try {
             await fetchAuth(values);
-            navigate('/appointments');
         } catch (error) {
             console.error("Login error", error);
             setErrors({email: 'Login failed. Please check your credentials.'});
-        } finally {
-            setSubmitting(false);
         }
     };
 

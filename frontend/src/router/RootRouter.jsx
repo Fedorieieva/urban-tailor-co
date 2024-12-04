@@ -9,17 +9,24 @@ import Home from "../pages/Home.jsx";
 import Appointments from "@/pages/Appointments.jsx";
 import CreateUserPage from "@/pages/CreateUserPage.jsx";
 import AllUsersPage from "@/pages/AllUsersPage.jsx";
+import TailorAppointments from "@/pages/TailorAppointments.jsx";
 
 const ProtectedRoute = ({children}) => {
     const isUser = Boolean(useSelector(selectAuthUserToken));
     return isUser ? children : <Navigate to="/"/>;
 };
 
-const AdminProtectedRoute = ({ children }) => {
+const AdminProtectedRoute = ({children}) => {
     const user = useSelector(selectUser);
     const isAdmin = user?.userType === "admin";
-    return isAdmin ? children : <Navigate to="/" />;
+    return isAdmin ? children : <Navigate to="/"/>;
 };
+
+const TailorProtectedRoute = ({children}) => {
+    const user = useSelector(selectUser);
+    const isAdmin = user?.userType === "tailor";
+    return isAdmin ? children : <Navigate to="/"/>;
+}
 
 const RootRouter = () => {
     const isUser = Boolean(useSelector(selectAuthUserToken));
@@ -28,14 +35,14 @@ const RootRouter = () => {
     return (
         <>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path='/sign-in' element={<AuthPage />} />
+                <Route path="/" element={<Home/>}/>
+                <Route path='/sign-in' element={<AuthPage/>}/>
 
                 <Route
                     path="/appointments"
                     element={
                         <ProtectedRoute>
-                            <Appointments />
+                            <Appointments/>
                         </ProtectedRoute>
                     }
                 />
@@ -44,7 +51,7 @@ const RootRouter = () => {
                     path="/create-user"
                     element={
                         <AdminProtectedRoute>
-                            <CreateUserPage />
+                            <CreateUserPage/>
                         </AdminProtectedRoute>
                     }
                 />
@@ -53,19 +60,19 @@ const RootRouter = () => {
                     path="/all-users"
                     element={
                         <AdminProtectedRoute>
-                            <AllUsersPage />
+                            <AllUsersPage/>
                         </AdminProtectedRoute>
                     }
                 />
 
-                {/*<Route*/}
-                {/*    path="/profile"*/}
-                {/*    element={*/}
-                {/*        <ProtectedRoute>*/}
-                {/*            <UserAccount />*/}
-                {/*        </ProtectedRoute>*/}
-                {/*    }*/}
-                {/*/>*/}
+                <Route
+                    path="/tailor-appointments"
+                    element={
+                        <TailorProtectedRoute>
+                            <TailorAppointments />
+                        </TailorProtectedRoute>
+                    }
+                />
 
                 {/*<Route*/}
                 {/*    path="/profile/:userId"*/}
@@ -80,7 +87,7 @@ const RootRouter = () => {
                     path="/settings"
                     element={
                         <ProtectedRoute>
-                            <EditAccount />
+                            <EditAccount/>
                         </ProtectedRoute>
                     }
                 />
