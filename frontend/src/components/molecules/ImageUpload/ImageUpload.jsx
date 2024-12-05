@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {useImageUpload} from "../../../hooks/handleCloudinary.js";
+import {useImageUpload} from "@/hooks/handleCloudinary.js";
 import Button from "../../atoms/Button/Button.jsx";
 import {useSelector} from "react-redux";
-import {selectIsLoadingImages} from "../../../store/selectors/uploadImage.selectors.js";
+import {selectIsLoadingImages} from "@/store/selectors/uploadImage.selectors.js";
 
-const ImageUpload = ({isProfile = false}) => {
+const ImageUpload = ({isProfile = false, className}) => {
     const {handleImageUpload} = useImageUpload();
     const isLoadingImages = useSelector(selectIsLoadingImages);
 
@@ -19,7 +19,7 @@ const ImageUpload = ({isProfile = false}) => {
     };
 
     return (
-        <div>
+        <div className={className}>
             <input
                 type="file"
                 onChange={onChange}
@@ -40,7 +40,8 @@ const ImageUpload = ({isProfile = false}) => {
 };
 
 ImageUpload.propTypes = {
-    isProfile: PropTypes.bool
+    isProfile: PropTypes.bool,
+    className: PropTypes.string
 }
 
 export default ImageUpload;

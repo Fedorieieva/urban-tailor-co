@@ -18,6 +18,11 @@ const EditTextArea = ({content, setContent, onClick, isEditing, className}) => {
         };
 
         adjustHeight();
+        window.addEventListener("resize", adjustHeight);
+
+        return () => {
+            window.removeEventListener("resize", adjustHeight);
+        };
     }, [content]);
 
     const handleKeyDown = (event) => {

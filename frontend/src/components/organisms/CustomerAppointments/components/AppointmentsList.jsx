@@ -65,8 +65,9 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
                             isFullWidth
                             onClick={() => handleAppointmentClick(item)}
                             className={style.appointmentBtn}
+                            key={item.id}
                         >
-                            <AppointmentRow appointment={item} key={item.id}/>
+                            <AppointmentRow appointment={item} />
                         </Button>
                     ) : (pending ? (
                             <Button
@@ -74,8 +75,9 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
                                 isFullWidth
                                 onClick={() => handleAppointmentClick(item)}
                                 className={style.appointmentBtn}
+                                key={item.id}
                             >
-                                <AppointmentRow appointment={item} key={item.id}/>
+                                <AppointmentRow appointment={item}/>
                             </Button>
                         ) : (tailorId ? (
                                 <AppointmentRow appointment={item} tailorId={tailorId} key={item.id}/>

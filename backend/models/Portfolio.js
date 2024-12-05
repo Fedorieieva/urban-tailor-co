@@ -68,3 +68,9 @@ exports.getPortfolioById = async (id) => {
         }
     });
 };
+
+exports.portfolioExists = async (tailorId) => {
+    return prisma.portfolios.findFirst({
+        where: {tailorId: tailorId},
+    });
+}

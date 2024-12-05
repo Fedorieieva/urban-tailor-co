@@ -10,6 +10,7 @@ import Appointments from "@/pages/Appointments.jsx";
 import CreateUserPage from "@/pages/CreateUserPage.jsx";
 import AllUsersPage from "@/pages/AllUsersPage.jsx";
 import TailorAppointments from "@/pages/TailorAppointments.jsx";
+import TailorPortfolioPage from "@/pages/TailorPortfolioPage.jsx";
 
 const ProtectedRoute = ({children}) => {
     const isUser = Boolean(useSelector(selectAuthUserToken));
@@ -70,6 +71,15 @@ const RootRouter = () => {
                     element={
                         <TailorProtectedRoute>
                             <TailorAppointments />
+                        </TailorProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/tailor-portfolio"
+                    element={
+                        <TailorProtectedRoute>
+                            <TailorPortfolioPage />
                         </TailorProtectedRoute>
                     }
                 />

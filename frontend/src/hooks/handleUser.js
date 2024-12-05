@@ -6,6 +6,7 @@ import {useDeleteImgFromCloudinary} from "./handleCloudinary.js";
 import {actionSetUserData, actionSetUserToken, actionUserLoader} from "../store/reducers/auth.reducer.js";
 import {useNavigate} from "react-router-dom";
 import {selectAuthUserToken, selectUploadedProfileImage, selectUser} from "@/store/selectors/index.js";
+import {actionClearProfileImageSrc} from "@/store/reducers/uploadedImage.slice.js";
 
 export const useCreateUser = (isAdminCreating = false) => {
     const navigate = useNavigate();
@@ -145,6 +146,8 @@ export const useEditUserInfo = () => {
             resetForm({values: response.data});
         } catch (error) {
             console.error('An error occurred while editing profile:', error.response?.data || error.message);
+        } finally {
+            dispatch(actionClearProfileImageSrc())
         }
     }
 };
@@ -194,7 +197,7 @@ export const useFetchUsersByRole = (role) => {
         };
 
         getAllUsers();
-    }, [role]); // Add role as a dependency
+    }, [role]);
 
     console.log(users);
     return users;

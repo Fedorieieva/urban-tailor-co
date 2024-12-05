@@ -83,6 +83,7 @@ const Header = ({className}) => {
                             {userToken && user.userType === 'tailor' && (
                                 <>
                                     <Button to='/tailor-appointments' variant='transparent'>Appointments</Button>
+                                    <Button to='/tailor-portfolio' variant='transparent'>Portfolio</Button>
                                 </>
                             )}
                         </nav>

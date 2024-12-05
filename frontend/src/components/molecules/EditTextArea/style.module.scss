@@ -5,7 +5,6 @@
 }
 
 .comment {
-  padding-left: 25px;
   resize: none;
   overflow: hidden;
   width: 100%;
@@ -15,12 +14,14 @@
   border: none;
   border-bottom: 1px solid transparent;
 
+  color: var(--color-white-solid);
+
   &:enabled {
-    border-color: var(--grey);
+    border-color: var(--color-grey-50);
   }
 
   &:focus {
-    border-bottom: 1px solid var(--blue);
+    border-bottom: 1px solid var(--color-orange-43);
   }
 }
 

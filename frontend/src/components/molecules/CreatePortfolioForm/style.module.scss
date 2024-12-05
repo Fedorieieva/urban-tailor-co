@@ -1,0 +1,18 @@
+.description textarea {
+  padding: 15px 20px !important;
+  margin-bottom: 25px;
+  width: 97%;
+  height: 120px;
+  resize: none;
+  border: 2px solid var(--color-grey-border) !important;
+  border-radius: var(--border-radius-secondary) !important;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-orange-43);
+  }
+}
+
+.submit {
+  margin: auto;
+}

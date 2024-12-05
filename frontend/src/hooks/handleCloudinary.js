@@ -31,11 +31,6 @@ export const useImageUpload = () => {
     const handleImageUpload = async (files, isProfile = false) => {
         dispatch(actionToggleLoadingImg());
 
-        if (files.length > 10) {
-            alert("You can upload a maximum of 10 images.");
-            files = files.slice(0, 10);
-        }
-
         try {
             let imageUrls = [];
 

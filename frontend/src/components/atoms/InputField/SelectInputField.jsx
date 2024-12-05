@@ -54,11 +54,4 @@ SelectField.propTypes = {
     onChange: PropTypes.func,
 };
 
-SelectField.defaultProps = {
-    placeholder: "Select an option",
-    value: "",
-    onChange: () => {
-    },
-};
-
 export default SelectField;

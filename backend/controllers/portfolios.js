@@ -11,6 +11,11 @@ exports.createPortfolio = async (req, res, next) => {
             return res.status(404).json({message: 'User not found'});
         }
 
+        const portfolioExists = await Portfolio.portfolioExists(tailorId);
+        if (portfolioExists) {
+            return res.status(400).json({message: 'Portfolio already exists fot this user'});
+        }
+
         const portfolio = Portfolio.createPortfolio(req.body);
         res.json(portfolio);
     } catch (error) {
@@ -70,13 +75,13 @@ exports.updatePortfolio = async (req, res, next) => {
         const portfolio = await Portfolio.getPortfolioById(portfolioId);
 
         if (!portfolio) {
-            return res.status(404).json({ message: 'Portfolio not found' });
+            return res.status(404).json({message: 'Portfolio not found'});
         }
 
         const updatedPortfolio = await Portfolio.updatePortfolio(portfolioId, req.body); // Pass both portfolioId and data
         res.json(updatedPortfolio);
     } catch (error) {
-        next(error); 
+        next(error);
     }
 };
 
