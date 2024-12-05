@@ -5,6 +5,7 @@ import style from './style.module.scss';
 import Container from "@/components/atoms/Container/Container.jsx";
 import Button from "@/components/atoms/Button/Button.jsx";
 import cn from 'classnames';
+import SectionTitle from "@/components/molecules/SectionTitle/SectionTitle.jsx";
 
 const AllUsersPage = () => {
     const [tab, setTab] = useState('customer')
@@ -30,8 +31,18 @@ const AllUsersPage = () => {
                 </Button>
             </div>
 
-            {tab === 'customer' && <Search role='user'/>}
-            {tab === 'tailor' && <Search role='tailor'/>}
+            {tab === 'customer' && (
+                <>
+                    <SectionTitle mainTitle='view customer appointment history'/>
+                    <Search role='user'/>
+                </>
+            )}
+            {tab === 'tailor' && (
+                <>
+                    <SectionTitle mainTitle='view tailor appointments'/>
+                    <Search role='tailor'/>
+                </>
+            )}
         </Container>
     );
 };

@@ -1,6 +1,6 @@
 const express = require("express");
+const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
-const passport = require("passport");
 
 const {
     deleteImageFromCloudinary
@@ -9,13 +9,6 @@ const {
 // @route   DELETE api/cloudinary/:id
 // @desc    DELETE existing post
 // @access  Private
-router.delete(
-    "/",
-    passport.authenticate(
-        "jwt",
-        {session: false}
-    ),
-    deleteImageFromCloudinary,
-);
+router.delete("/", authMiddleware, deleteImageFromCloudinary);
 
 module.exports = router;

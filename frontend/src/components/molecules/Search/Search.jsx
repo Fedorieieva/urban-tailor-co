@@ -7,8 +7,9 @@ import PropTypes from "prop-types";
 import UserHeader from "@/components/molecules/UserHeader/UserHeader.jsx";
 import {useFetchUsersByRole} from "@/hooks/handleUser.js";
 import {AppointmentsList} from "@/components/organisms/CustomerAppointments/index.js";
+import PortfolioModal from "@/components/organisms/PortfolioModal/PortfolioModal.jsx";
 
-const Search = ({className, role}) => {
+const Search = ({className, role, viewPortfolio = false}) => {
     const users = useFetchUsersByRole(role);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -79,6 +80,14 @@ const Search = ({className, role}) => {
 
             {role === "user" && selectedUserId && (
                 <AppointmentsList userId={selectedUserId}/>
+            )}
+
+            {role === "tailor" && selectedUserId && (
+                viewPortfolio ? (
+                    <PortfolioModal tailorId={selectedUserId} onClose={() => setSelectedUserId(null)} />
+                ) : (
+                    <AppointmentsList tailorId={selectedUserId} />
+                )
             )}
         </section>
     );

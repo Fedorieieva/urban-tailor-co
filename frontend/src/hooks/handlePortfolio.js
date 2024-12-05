@@ -68,6 +68,23 @@ export const useFetchTailorPortfolio = (tailorId) => {
     return portfolio;
 }
 
+export const fetchPortfolioById = async (portfolioId) => {
+    console.log(portfolioId);
+
+    try {
+        const response = await axios.get(`${API_URL}/portfolios/${portfolioId}`);
+        const portfolio = response.data;
+        console.log("Got tailor portfolio:", response.data);
+        return portfolio;
+    } catch (error) {
+        console.error(
+            "An error occurred while getting portfolio by id:",
+            error.response?.data || error.message
+        );
+        throw error;
+    }
+};
+
 export const useUpdatePortfolio = () => {
     const userToken = useSelector(selectAuthUserToken);
     const uploadedImgUrls = useSelector(selectUploadedPostImages);

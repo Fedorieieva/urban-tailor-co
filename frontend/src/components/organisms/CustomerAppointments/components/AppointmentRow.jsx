@@ -4,10 +4,13 @@ import Typography from "@/shared/ui/Typography/Tupography.jsx";
 import style from './style.module.scss';
 import {SelectField} from "@/components/atoms/InputField/index.js";
 import {useChangeAppointmentStatus} from "@/hooks/handleAppointment.js";
+import {useSelector} from "react-redux";
+import {selectUser} from "@/store/selectors/index.js";
 
 const AppointmentRow = ({appointment, tailorId}) => {
     const changeAppointmentStatus = useChangeAppointmentStatus();
     const [status, setStatus] = useState(appointment.status);
+    const currentUserId = useSelector(selectUser).id;
 
     const tailoringStatuses = [
         {value: "pending", label: "Pending"},
@@ -58,7 +61,7 @@ const AppointmentRow = ({appointment, tailorId}) => {
             </div>
 
             <div className={style.column}>
-                {tailorId ? (
+                {tailorId === currentUserId ? (
                     <SelectField
                         name="appointmentStatus"
                         options={tailoringStatuses}

@@ -56,8 +56,30 @@
   gap: 80px;
 }
 
+
 // Tailor Portfolio Page
 .upload {
   margin-bottom: 15px;
 
+}
+
+
+// Tailors
+.tailorsPage {
+  //min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.tailorsTitle {
+  margin-bottom: 45px;
+
+  > * {
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.searchWrapper{
+  flex: 1;
 }

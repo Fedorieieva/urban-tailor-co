@@ -1,0 +1,22 @@
+.modal {
+  padding: 35px;
+  max-width: 950px;
+  width: 100%;
+  max-height: 850px;
+  overflow-y: scroll;
+  background-color: var(--color-red-12);
+  border-radius: var(--border-radius-secondary);
+
+  &Header {
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  &Close {
+    margin-left: auto;
+  }
+
+  &Body {
+    padding: 0 40px;
+  }
+}

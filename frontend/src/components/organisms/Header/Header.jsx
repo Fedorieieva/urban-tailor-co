@@ -72,6 +72,7 @@ const Header = ({className}) => {
                             <Button to='/' variant='transparent'>Home</Button>
 
                             {userToken && user.userType === 'user' && <Button to='/appointments' variant='transparent'>Appointments</Button>}
+                            {userToken && user.userType === 'user' && <Button to='/tailors' variant='transparent'>tailors</Button>}
 
                             {userToken && user.userType === 'admin' && (
                                 <>

@@ -1,10 +1,15 @@
-.actionBtns{
+.actionBtns {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
 
   margin-bottom: 25px;
+}
+
+.deleteImg {
+  margin-left: auto;
+  margin-bottom: 5px;
 }
 
 .portfolioInfo {
@@ -24,6 +29,7 @@
   grid-column: 2;
   grid-row: 1;
 }
+
 .imgGallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

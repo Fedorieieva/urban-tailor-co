@@ -13,7 +13,6 @@ const TailorPortfolioPage = () => {
     const tailorId = useSelector(selectUser).id;
     const portfolio = useFetchTailorPortfolio(tailorId);
 
-    console.log(portfolio);
     return (
         <>
             <Banner title='Your Portfolio' bannerImg='../../public/images/appointments-banner.png'/>
