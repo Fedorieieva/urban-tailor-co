@@ -13,21 +13,14 @@ import ReviewModal from "@/components/organisms/CustomerAppointments/components/
 import AppointmentsListHeader from "@/components/organisms/CustomerAppointments/components/AppointmentsListHeader.jsx";
 import AssignModal from "@/components/organisms/CustomerAppointments/components/AssignModal.jsx";
 
-const AppointmentsList = ({userId, tailorId, review = false, pending = false}) => {
+const AppointmentsList = ({userId, tailorId, review = false, pending = false}, fetchHook) => {
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('appointmentDate');
     const limit = 10;
-    let appointmentsData;
-
-    if (tailorId) {
-        appointmentsData = useFetchTailorAppointments(tailorId, page, limit, sort);
-    } else if (userId) {
-        appointmentsData = useFetchUserAppointments(userId, page, limit, sort);
-    } else {
-        appointmentsData = useFetchPendingAppointments(page, limit, sort);
-    }
-
-    const { appointments, total } = appointmentsData;
+    const {appointments, total} = tailorId
+        ? useFetchTailorAppointments(tailorId, page, limit, sort)
+        : (userId ? useFetchUserAppointments(userId, page, limit, sort)
+            : useFetchPendingAppointments(page, limit, sort));
 
     const [chosenAppointment, setChosenAppointment] = useState(null);
     const [isModal, setIsModal] = useState('');
@@ -75,7 +68,7 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
                             className={style.appointmentBtn}
                             key={item.id}
                         >
-                            <AppointmentRow appointment={item} />
+                            <AppointmentRow appointment={item}/>
                         </Button>
                     ) : (pending ? (
                             <Button
@@ -89,7 +82,7 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
                             </Button>
                         ) : (tailorId ? (
                                 <AppointmentRow appointment={item} tailorId={tailorId} key={item.id}/>
-                        ) : (
+                            ) : (
                                 <AppointmentRow appointment={item} key={item.id}/>
                             )
                         )
@@ -128,6 +121,7 @@ AppointmentsList.propTypes = {
     tailorId: PropTypes.string,
     review: PropTypes.bool,
     pending: PropTypes.bool,
+    fetchHook: PropTypes.func
 }
 
 export default AppointmentsList

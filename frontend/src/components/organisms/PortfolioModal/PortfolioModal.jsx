@@ -19,6 +19,7 @@ const PortfolioModal = ({tailorId, onClose}) => {
             <div
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
+                onKeyDown={() => {}}
             >
                 <ModalHeader className={style.modalHeader}>
                     <ModalClose onClick={onClose} className={style.modalClose}/>

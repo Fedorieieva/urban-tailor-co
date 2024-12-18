@@ -5,7 +5,6 @@ import style from './style.module.scss';
 import {useSelector} from "react-redux";
 import {selectUser} from "@/store/selectors/index.js";
 import AppointmentsList from "@/components/organisms/CustomerAppointments/components/AppointmentsList.jsx";
-
 const CustomerAppointments = () => {
     const userId = useSelector(selectUser).id;
 
