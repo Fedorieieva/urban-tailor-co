@@ -30,7 +30,7 @@ const SocialMedia = ({className}) => {
     );
 };
 
-SocialMedia.propType = {
+SocialMedia.propTypes = {
     className: PropTypes.string
 }
 

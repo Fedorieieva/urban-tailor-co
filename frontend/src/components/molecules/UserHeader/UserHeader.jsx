@@ -15,7 +15,7 @@ const UserHeader = ({userAvatar, username, className}) => {
 };
 
 UserHeader.propTypes = {
-    serAvatar: PropTypes.string,
+    userAvatar: PropTypes.string,
     username: PropTypes.string,
     className: PropTypes.string,
 }

@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {API_URL} from "../config/config.js";
-import {useDeleteImgFromCloudinary} from "./handleCloudinary.js";
+import {deleteImageFromCloudinary} from "./handleCloudinary.js";
 import {actionSetUserData, actionSetUserToken, actionUserLoader} from "../store/reducers/auth.reducer.js";
 import {useNavigate} from "react-router-dom";
 import {selectAuthUserToken, selectUploadedProfileImage, selectUser} from "@/store/selectors/index.js";
@@ -141,7 +141,7 @@ export const useEditUserInfo = () => {
             dispatch(actionSetUserData(response.data));
 
             if (oldAvatarUrl && oldAvatarUrl !== newAvatarUrl) {
-                await useDeleteImgFromCloudinary(oldAvatarUrl, userToken);
+                await deleteImageFromCloudinary(oldAvatarUrl, userToken);
             }
 
             resetForm({values: response.data});

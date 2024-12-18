@@ -61,7 +61,7 @@ export const useImageUpload = () => {
     return {handleImageUpload};
 };
 
-export const useDeleteImgFromCloudinary = async (url, userToken) => {
+export const deleteImageFromCloudinary = async (url, userToken) => {
     const getPublicIdFromUrl = (url) => {
         const parts = url.split('/upload/')[1];
         if (!parts) return null;

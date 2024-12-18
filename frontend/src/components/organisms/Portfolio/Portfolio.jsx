@@ -17,7 +17,7 @@ import Button from "@/components/atoms/Button/Button.jsx";
 import EditTextArea from "@/components/molecules/EditTextArea/EditTextArea.jsx";
 import ImageUpload from "@/components/molecules/ImageUpload/ImageUpload.jsx";
 import Typography from "@/shared/ui/Typography/Tupography.jsx";
-import {useDeleteImgFromCloudinary} from "@/hooks/handleCloudinary.js";
+import {deleteImageFromCloudinary} from "@/hooks/handleCloudinary.js";
 import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 
 const Portfolio = ({tailorId}) => {
@@ -58,7 +58,7 @@ const Portfolio = ({tailorId}) => {
 
     const handleDeleteImage = async (imageUrl) => {
         try {
-            await useDeleteImgFromCloudinary(imageUrl, userToken);
+            await deleteImageFromCloudinary(imageUrl, userToken);
             const updatedImgUrls = portfolio.imgUrls.filter((url) => url !== imageUrl);
             await editPortfolio(portfolio.id, {description, imgUrls: updatedImgUrls});
 

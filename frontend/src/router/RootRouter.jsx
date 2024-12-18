@@ -19,17 +19,29 @@ const ProtectedRoute = ({children}) => {
     return isUser ? children : <Navigate to="/"/>;
 };
 
+ProtectedRoute.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
 const AdminProtectedRoute = ({children}) => {
     const user = useSelector(selectUser);
     const isAdmin = user?.userType === "admin";
     return isAdmin ? children : <Navigate to="/"/>;
 };
 
+AdminProtectedRoute.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
 const TailorProtectedRoute = ({children}) => {
     const user = useSelector(selectUser);
     const isAdmin = user?.userType === "tailor";
     return isAdmin ? children : <Navigate to="/"/>;
-}
+};
+
+TailorProtectedRoute.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 const RootRouter = () => {
     return (
@@ -104,9 +116,5 @@ const RootRouter = () => {
         </Routes>
     );
 };
-
-RootRouter.propTypes = {
-    children: PropTypes.any,
-}
 
 export default RootRouter;
