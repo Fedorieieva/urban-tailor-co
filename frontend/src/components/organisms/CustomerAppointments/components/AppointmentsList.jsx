@@ -13,7 +13,7 @@ import ReviewModal from "@/components/organisms/CustomerAppointments/components/
 import AppointmentsListHeader from "@/components/organisms/CustomerAppointments/components/AppointmentsListHeader.jsx";
 import AssignModal from "@/components/organisms/CustomerAppointments/components/AssignModal.jsx";
 
-const AppointmentsList = ({userId, tailorId, review = false, pending = false}, fetchHook) => {
+const AppointmentsList = ({userId, tailorId, review = false, pending = false}) => {
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('appointmentDate');
     const limit = 10;
