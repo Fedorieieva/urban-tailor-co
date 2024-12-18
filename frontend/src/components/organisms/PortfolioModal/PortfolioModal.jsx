@@ -16,10 +16,9 @@ const PortfolioModal = ({tailorId, onClose}) => {
 
     return ReactDOM.createPortal(
         <ModalWrapper onClick={onClose}>
-            <dialog
+            <div
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
-                open
             >
                 <ModalHeader className={style.modalHeader}>
                     <ModalClose onClick={onClose} className={style.modalClose}/>
@@ -28,7 +27,7 @@ const PortfolioModal = ({tailorId, onClose}) => {
                 <ModalBody className={style.modalBody}>
                     <Portfolio tailorId={tailorId}/>
                 </ModalBody>
-            </dialog>
+            </div>
         </ModalWrapper>,
         document.body
     );
