@@ -19,11 +19,15 @@ const AssignModal = ({onClose, appointment}) => {
 
     return ReactDOM.createPortal(
         <ModalWrapper onClick={onClose}>
-            <div
+            <dialog
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
-                onKeyDown={() => {}}
-                role="dialog"
+                onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                        onClose();
+                    }
+                }}
+                open
             >
                 <ModalHeader className={style.modalHeader}>
                     <ModalClose onClick={onClose} className={style.modalClose}/>
@@ -50,13 +54,16 @@ const AssignModal = ({onClose, appointment}) => {
                         </Typography>)
                     }
 
-                    <Button isFullWidth onClick={() => assignAppointment(appointment.id)}>
+                    <Button isFullWidth onClick={() => {
+                        assignAppointment(appointment.id);
+                        onClose()
+                    }}>
                         <Typography variant="text-xs" bold>
                             Assign appointment
                         </Typography>
                     </Button>
                 </ModalBody>
-            </div>
+            </dialog>
         </ModalWrapper>,
         document.body
     );

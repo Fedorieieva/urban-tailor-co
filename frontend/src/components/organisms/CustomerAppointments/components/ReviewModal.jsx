@@ -46,11 +46,15 @@ const ReviewModal = ({onClose, appointmentId}) => {
 
     return ReactDOM.createPortal(
         <ModalWrapper onClick={onClose}>
-            <div
+            <dialog
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
-                onKeyDown={() => {}}
-                role="dialog"
+                onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                        onClose();
+                    }
+                }}
+                open
             >
                 <ModalHeader className={style.modalHeader}>
                     <ModalClose onClick={onClose} className={style.modalClose}/>
@@ -92,7 +96,7 @@ const ReviewModal = ({onClose, appointmentId}) => {
                         </Form>
                     </Formik>
                 </ModalBody>
-            </div>
+            </dialog>
         </ModalWrapper>,
         document.body
     );
