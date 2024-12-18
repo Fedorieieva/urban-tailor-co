@@ -19,11 +19,6 @@ const PortfolioModal = ({tailorId, onClose}) => {
             <dialog
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
-                onKeyDown={(event) => {
-                    if (event.key === "Escape") {
-                        onClose();
-                    }
-                }}
                 open
             >
                 <ModalHeader className={style.modalHeader}>
