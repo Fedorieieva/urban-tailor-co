@@ -22,6 +22,8 @@ const AssignModal = ({onClose, appointment}) => {
             <div
                 className={style.modal}
                 onClick={(event) => event.stopPropagation()}
+                onKeyDown={() => {}}
+                role="dialog"
             >
                 <ModalHeader className={style.modalHeader}>
                     <ModalClose onClick={onClose} className={style.modalClose}/>
