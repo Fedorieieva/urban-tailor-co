@@ -17,11 +17,9 @@ const InputField = (props) => {
             />
             <ErrorMessage
                 name={name}
-                component={({children}) => (
-                    <Typography isError underline variant='text-xs'>
-                        {children}
-                    </Typography>
-                )}
+                component={({children}) => <Typography isError underline variant='text-xs'>
+                    {children}
+                </Typography>}
             />
         </div>
     );

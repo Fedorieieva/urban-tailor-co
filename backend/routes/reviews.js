@@ -46,7 +46,6 @@ router.delete('/:id', authMiddleware,  deleteReview);
 // @desc    Update current review
 // @access  Private
 router.put('/:id', authMiddleware, updateReview);
-// router.put('/:id', updateReview);
 
 // @route   GET /api/reviews/get-user/:id
 // @desc    GET existing reviews by user id

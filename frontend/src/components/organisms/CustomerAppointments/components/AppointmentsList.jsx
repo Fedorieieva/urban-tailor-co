@@ -17,10 +17,18 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('appointmentDate');
     const limit = 10;
-    const {appointments, total} = tailorId
-        ? useFetchTailorAppointments(tailorId, page, limit, sort)
-        : (userId ? useFetchUserAppointments(userId, page, limit, sort)
-            : useFetchPendingAppointments(page, limit, sort));
+    let appointmentsData;
+
+    if (tailorId) {
+        appointmentsData = useFetchTailorAppointments(tailorId, page, limit, sort);
+    } else if (userId) {
+        appointmentsData = useFetchUserAppointments(userId, page, limit, sort);
+    } else {
+        appointmentsData = useFetchPendingAppointments(page, limit, sort);
+    }
+
+    const { appointments, total } = appointmentsData;
+
     const [chosenAppointment, setChosenAppointment] = useState(null);
     const [isModal, setIsModal] = useState('');
 

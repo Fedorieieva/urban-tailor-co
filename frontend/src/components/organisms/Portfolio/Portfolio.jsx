@@ -31,7 +31,7 @@ const Portfolio = ({tailorId}) => {
         setPortfolio(initialPortfolio);
     }, [initialPortfolio]);
 
-    const {editPortfolio, isEditing: isUpdating} = useUpdatePortfolio();
+    const {editPortfolio} = useUpdatePortfolio();
     const isLoadingImages = useSelector(selectIsLoadingImages);
     const [isEditing, setIsEditing] = useState(false);
     const [description, setDescription] = useState('');
@@ -118,7 +118,7 @@ const Portfolio = ({tailorId}) => {
 
             <div className={style.imgGallery}>
                 {portfolio.imgUrls.map((item, idx) => (
-                    <div className={style.imgWrapper} key={idx}>
+                    <div className={style.imgWrapper} key={portfolio.imgUrls[idx]}>
                         {isEditing && (
                             <Button
                                 variant="transparent"
