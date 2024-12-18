@@ -17,8 +17,19 @@ const ModalWrapper = ({children, onClick}) => {
         };
     }, [onClick]);
 
+    const handleClick = (event) => {
+        if (event.target === event.currentTarget) {
+            onClick();
+        }
+    };
+
     return (
-        <div className={style.modalWrapper} onClick={onClick}>
+        <div
+            className={style.modalWrapper}
+            onClick={handleClick}
+            onKeyDown={(e) => e.key === "Escape" && onClick()}
+            tabIndex="0"
+        >
             {children}
         </div>
     );
