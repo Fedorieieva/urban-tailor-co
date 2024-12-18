@@ -24,16 +24,10 @@
   color: var(--color-black-solid) !important;
 
   .column {
-    //display: flex;
-    //align-items: center;
-    //justify-content: center;
-
     border: none;
 
     button:hover {
       transform: scale(1.0);
-      //border-bottom: 1px solid var(--color-orange-43);
-      //border-radius: 0;
     }
   }
 }
@@ -41,11 +35,6 @@
 .list {
   margin-bottom: 35px;
 }
-
-//.pending {
-//  display: flex;
-//  gap: 10px;
-//}
 
 .appointmentBtn {
   padding: 0;

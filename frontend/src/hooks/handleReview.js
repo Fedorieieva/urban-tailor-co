@@ -61,6 +61,34 @@ export const useUpdateReview = (reviewId) => {
     }
 }
 
+export const useFetchReviews = (page = 1, limit = 10) => {
+    const [reviews, setReviews] = useState([]);
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/reviews`, {
+                    params: {page, limit},
+                });
+
+                setReviews(response.data.reviews);
+                setTotal(response.data.total);
+                console.log("Fetched reviews successfully:", response.data.reviews);
+            } catch (error) {
+                console.error(
+                    "An error occurred while fetching reviews:",
+                    error.response?.data || error.message
+                );
+            }
+        };
+
+        fetchReviews();
+    }, [page, limit]);
+
+    return {reviews, total};
+};
+
 export const useFetchReviewByAppointmentId = (appointmentId) => {
     const [review, setReview] = useState({});
 
@@ -87,3 +115,18 @@ export const useFetchReviewByAppointmentId = (appointmentId) => {
 
     return review;
 };
+
+export const fetchUserByReview = async (reviewId) => {
+    try {
+        const response = await axios.get(`${API_URL}/reviews/get-user/${reviewId}`);
+        const portfolio = response.data;
+        console.log("Got user by review:", response.data);
+        return portfolio;
+    } catch (error) {
+        console.error(
+            "An error occurred while getting user by review:",
+            error.response?.data || error.message
+        );
+        throw error;
+    }
+}

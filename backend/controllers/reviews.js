@@ -125,3 +125,20 @@ exports.getReviewsByUserId = async (req, res, next) => {
         next(error);
     }
 };
+
+exports.getUserByReviewId = async (req, res, next) => {
+    const reviewId = req.params.id;
+
+    try {
+        const review = await Review.getReviewById(reviewId);
+        if (!review) {
+            return res.status(404).json({message: 'Review not found'});
+        }
+
+        const user = await Review.getUserByReviewId(reviewId);
+
+        res.status(200).json(user);
+    } catch (error) {
+        next(error);
+    }
+};

@@ -12,7 +12,6 @@ import {useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 import {actionClearUserData} from "@/store/reducers/auth.reducer.js";
-import RoundIcon from "@/components/atoms/RoundIcon/RoundIcon.jsx";
 import UserHeader from "@/components/molecules/UserHeader/UserHeader.jsx";
 
 const Header = ({className}) => {

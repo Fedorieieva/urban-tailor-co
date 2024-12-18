@@ -69,8 +69,6 @@ export const useFetchTailorPortfolio = (tailorId) => {
 }
 
 export const fetchPortfolioById = async (portfolioId) => {
-    console.log(portfolioId);
-
     try {
         const response = await axios.get(`${API_URL}/portfolios/${portfolioId}`);
         const portfolio = response.data;

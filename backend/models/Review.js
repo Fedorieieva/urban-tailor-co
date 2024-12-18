@@ -78,6 +78,22 @@ exports.getUserReviews = async (userId, page = 1, limit = 10) => {
     return {total, reviews};
 };
 
+exports.getUserByReviewId = async (reviewId) => {
+    return prisma.reviews.findUnique({
+        where: {
+            id: String(reviewId),
+        },
+        include: {
+            appointment: {
+                include: {
+                    customer: true,
+                },
+            },
+        },
+    }).then(review => review?.appointment?.customer || null);
+};
+
+
 exports.reviewExists = async (appointmentId) => {
     return prisma.reviews.findFirst({
         where: {appointmentId},

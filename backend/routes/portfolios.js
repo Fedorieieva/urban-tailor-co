@@ -15,7 +15,6 @@ const router = express.Router();
 // @desc    Create portfolio
 // @access  Private
 router.post('/', authMiddleware, createPortfolio);
-// router.post('/', createPortfolio);
 
 // @route   GET /api/portfolios
 // @desc    GET all existing appointments
@@ -36,12 +35,10 @@ router.get('/tailor/:id', getTailorPortfolio);
 // @desc    Update current portfolio
 // @access  Private
 router.put('/:id', authMiddleware, updatePortfolio);
-// router.put('/:id', updatePortfolio);
 
 // @route   DELETE /api/portfolios/:id
 // @desc    Delete current portfolio
 // @access  Private
 router.delete('/:id', authMiddleware,  deletePortfolio);
-// router.delete('/:id',  deletePortfolio);
 
 module.exports = router;

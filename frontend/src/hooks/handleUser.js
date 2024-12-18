@@ -46,6 +46,7 @@ export const useLogInUser = () => {
         try {
             const response = await axios.post(`${API_URL}/users/login`, credentials);
             console.log(response.data);
+
             if (response.data) {
                 const token = response.data.token;
                 const id = response.data.id;
@@ -178,7 +179,6 @@ export const useEditUserPassword = () => {
 
 export const useFetchUsersByRole = (role) => {
     const [users, setUsers] = useState([]);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (!role) {
@@ -191,7 +191,6 @@ export const useFetchUsersByRole = (role) => {
                 const response = await axios.get(`${API_URL}/users/role/${role}`);
                 setUsers(response.data);
             } catch (error) {
-                setError(error.response?.data || error.message);
                 console.error("Error fetching users:", error.response?.data || error.message);
             }
         };

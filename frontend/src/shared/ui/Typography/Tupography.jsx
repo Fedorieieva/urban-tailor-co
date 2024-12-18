@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import cn from "classnames";
 import styles from "./style.module.scss";
 import { tagMap } from "./typography.config";
@@ -47,6 +48,24 @@ const Typography = (props) => {
             {children}
         </Tag>
     );
+};
+
+Typography.propTypes = {
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    style: PropTypes.object,
+    variant: PropTypes.oneOf(Object.keys(tagMap)),
+    tag: PropTypes.elementType,
+    bold: PropTypes.bool,
+    mediumBold: PropTypes.bool,
+    colored: PropTypes.bool,
+    black: PropTypes.bool,
+    underline: PropTypes.bool,
+    uppercase: PropTypes.bool,
+    capitalize: PropTypes.bool,
+    fullWidth: PropTypes.bool,
+    goldUnderline: PropTypes.bool,
+    isError: PropTypes.bool,
 };
 
 export default Typography;

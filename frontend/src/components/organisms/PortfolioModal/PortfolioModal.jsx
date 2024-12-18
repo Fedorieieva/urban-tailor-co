@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import {ModalBody, ModalClose, ModalHeader, ModalWrapper} from "@/components/atoms/Modal/index.js";
 import style from './style.module.scss';
@@ -30,7 +31,11 @@ const PortfolioModal = ({tailorId, onClose}) => {
         </ModalWrapper>,
         document.body
     );
-
 };
+
+PortfolioModal.propTypes = {
+    tailorId: PropTypes.string,
+    onClose: PropTypes.func,
+}
 
 export default PortfolioModal

@@ -13,7 +13,8 @@ const ModalHeader = (props) => {
 }
 
 ModalHeader.propTypes = {
-    children: PropTypes.any
+    children: PropTypes.any,
+    className: PropTypes.string,
 }
 
 export default ModalHeader

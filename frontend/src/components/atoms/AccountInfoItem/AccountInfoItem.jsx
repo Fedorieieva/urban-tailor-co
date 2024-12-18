@@ -12,9 +12,9 @@ const AccountInfoItem = ({title, info}) => {
     )
 };
 
-// AccountInfoItem.propTypes = {
-//     title: PropTypes.string,
-//     info: PropTypes.string,
-// }
+AccountInfoItem.propTypes = {
+    title: PropTypes.string,
+    info: PropTypes.string,
+}
 
 export default AccountInfoItem

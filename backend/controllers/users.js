@@ -89,7 +89,6 @@ exports.updatePassword = async (req, res, next) => {
         }
 
         const isPasswordValid = await User.comparePassword(currentPassword, user.password);
-        // const isPasswordValid = currentPassword === user.password;
         if (!isPasswordValid) {
             return res.status(401).json({message: 'Current password is incorrect'});
         }

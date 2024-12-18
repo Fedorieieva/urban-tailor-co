@@ -15,7 +15,7 @@ const SelectField = ({name, options, placeholder, className, value, onChange, ..
                 <Field as="select" name={name} {...props}>
                     <option value="">{placeholder}</option>
                     {options.map(({value, label}, index) => (
-                        <option key={index} value={value}>
+                        <option key={label} value={value}>
                             {label}
                         </option>
                     ))}
@@ -30,7 +30,7 @@ const SelectField = ({name, options, placeholder, className, value, onChange, ..
                 >
                     <option value="">{placeholder}</option>
                     {options.map(({value, label}, index) => (
-                        <option key={index} value={value}>
+                        <option key={label} value={value}>
                             {label}
                         </option>
                     ))}

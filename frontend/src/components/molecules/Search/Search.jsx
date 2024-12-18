@@ -13,7 +13,6 @@ const Search = ({className, role, viewPortfolio = false}) => {
     const users = useFetchUsersByRole(role);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [isSearching, setIsSearching] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState(null);
 
     useEffect(() => {
@@ -23,7 +22,6 @@ const Search = ({className, role, viewPortfolio = false}) => {
     const handleSearch = (event) => {
         const searchValue = event.target.value.toLowerCase();
         setSearchTerm(searchValue);
-        setIsSearching(searchValue !== "");
 
         const filtered = users.filter(
             (user) =>
@@ -95,7 +93,8 @@ const Search = ({className, role, viewPortfolio = false}) => {
 
 Search.propTypes = {
     className: PropTypes.string,
-    role: PropTypes.oneOf(['user', 'tailor'])
+    role: PropTypes.oneOf(['user', 'tailor']),
+    viewPortfolio: PropTypes.bool,
 };
 
 export default Search;

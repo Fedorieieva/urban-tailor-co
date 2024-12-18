@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import PropTypes from "prop-types";
 import {
     useFetchTailorPortfolio,
     useUpdatePortfolio,
@@ -77,12 +78,13 @@ const Portfolio = ({tailorId}) => {
     }, [isLoadingImages]);
 
     if (!tailor || !portfolio || Object.keys(portfolio).length === 0) {
-        return <div>Loading...</div>;
+        return <Typography variant='text-xl' capitalize>
+            we are sorry, the tailor didn't fill out his portfolio yet
+        </Typography>;
     }
 
     return (
         <div>
-
             {currentUser === portfolio.tailorId && (
                 <div className={style.actionBtns}>
                     {isEditing && <ImageUpload onUploadComplete={handleEditCompletion}/>}
@@ -129,7 +131,7 @@ const Portfolio = ({tailorId}) => {
                         )}
                         <img
                             src={item}
-                            alt={`Portfolio image ${idx + 1}`}
+                            alt={`Portfolio item ${idx + 1}`}
                             className={style.image}
                         />
                     </div>
@@ -138,5 +140,9 @@ const Portfolio = ({tailorId}) => {
         </div>
     );
 };
+
+Portfolio.propTypes = {
+    tailorId: PropTypes.string,
+}
 
 export default Portfolio;

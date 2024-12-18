@@ -52,6 +52,5 @@ router.put('/:id/update-password', authMiddleware, updatePassword);
 // @desc    Delete current user
 // @access  Private
 router.delete('/:id', authMiddleware,  deleteUser);
-// router.delete('/:id',  deleteUser);
 
 module.exports = router;

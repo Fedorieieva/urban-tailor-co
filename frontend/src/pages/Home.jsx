@@ -10,6 +10,7 @@ import Offer from "@/components/organisms/Offer/Offer.jsx";
 import Gallery from "@/components/organisms/Gallery/Gallery.jsx";
 import {useSelector} from "react-redux";
 import {selectAuthUserToken} from "@/store/selectors/index.js";
+import Reviews from "@/components/organisms/Reviews/Reviews.jsx";
 
 const Home = () => {
     const userToken = useSelector(selectAuthUserToken);
@@ -36,6 +37,7 @@ const Home = () => {
             <Best/>
             <Offer/>
             <Gallery/>
+            <Reviews/>
         </>
 
     );

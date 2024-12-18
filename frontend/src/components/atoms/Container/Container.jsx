@@ -29,6 +29,7 @@ Container.propTypes = {
     bgImage: PropTypes.string,
     light: PropTypes.bool,
     dark: PropTypes.bool,
+    mask: PropTypes.bool,
 }
 
 export default Container

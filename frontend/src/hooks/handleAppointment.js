@@ -26,7 +26,7 @@ export const useMakeAppointment = () => {
                 }
             );
 
-            console.log("Appointment made successfully");
+            console.log("Appointment made successfully: ", response.data);
             resetForm();
         } catch (error) {
             console.error(
@@ -150,7 +150,7 @@ export const useAssignAppointmentToTailor = () => {
                 }
             );
 
-            console.log("Appointment assigned successfully");
+            console.log("Appointment assigned successfully: ", response.data);
         } catch (error) {
             console.error(
                 "An error occurred while assigning appointment:",
@@ -169,7 +169,7 @@ export const useAssignAppointmentToTailor = () => {
                 }
             );
 
-            console.log("Appointment status changed to in review successfully");
+            console.log("Appointment status changed to in review successfully: ", response.data);
         } catch (error) {
             console.error(
                 "An error occurred while changing appointment status to in review:",
@@ -194,7 +194,7 @@ export const useChangeAppointmentStatus = () => {
                 }
             );
 
-            console.log("Appointment status changed successfully");
+            console.log("Appointment status changed successfully: ", response.data);
         } catch (error) {
             console.error(
                 "An error occurred while changing appointment status:",

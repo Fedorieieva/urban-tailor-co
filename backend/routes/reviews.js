@@ -8,6 +8,7 @@ const {
     getReviewByAppointmentId,
     getReviewById,
     getReviewsByUserId,
+    getUserByReviewId,
 } = require('../controllers/reviews');
 const router = express.Router();
 
@@ -15,7 +16,6 @@ const router = express.Router();
 // @desc    Create review
 // @access  Private
 router.post('/', authMiddleware, createReview);
-// router.post('/', createReview);
 
 // @route   GET /api/reviews
 // @desc    GET all existing reviews
@@ -41,12 +41,16 @@ router.get('/user/:id', getReviewsByUserId);
 // @desc    Delete current review
 // @access  Private
 router.delete('/:id', authMiddleware,  deleteReview);
-// router.delete('/:id',  deleteReview);
 
 // @route   PUT /api/reviews/:id
 // @desc    Update current review
 // @access  Private
 router.put('/:id', authMiddleware, updateReview);
 // router.put('/:id', updateReview);
+
+// @route   GET /api/reviews/get-user/:id
+// @desc    GET existing reviews by user id
+// @access  Public
+router.get('/get-user/:id', getUserByReviewId);
 
 module.exports = router;

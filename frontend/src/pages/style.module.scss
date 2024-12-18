@@ -80,6 +80,21 @@
   }
 }
 
-.searchWrapper{
+.searchWrapper {
   flex: 1;
+}
+
+
+// Not Found
+.notFound {
+  min-height: 100vh;
+  display: grid;
+
+  &Info {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+
+    text-align: center;
+  }
 }

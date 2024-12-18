@@ -22,7 +22,7 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
         : (userId ? useFetchUserAppointments(userId, page, limit, sort)
             : useFetchPendingAppointments(page, limit, sort));
     const [chosenAppointment, setChosenAppointment] = useState(null);
-    const [isModal, setModal] = useState('');
+    const [isModal, setIsModal] = useState('');
 
     const totalPages = Math.ceil(total / limit);
 
@@ -47,9 +47,9 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
         setChosenAppointment(appointment);
 
         if (review) {
-            setModal('review');
+            setIsModal('review');
         } else if (pending) {
-            setModal('assign');
+            setIsModal('assign');
         }
     }
 
@@ -109,15 +109,17 @@ const AppointmentsList = ({userId, tailorId, review = false, pending = false}) =
                 </Button>
             </div>
 
-            {isModal === 'review' && <ReviewModal onClose={() => setModal('')} appointmentId={chosenAppointment.id}/>}
-            {isModal === 'assign' && <AssignModal onClose={() => setModal('')} appointment={chosenAppointment}/>}
+            {isModal === 'review' && <ReviewModal onClose={() => setIsModal('')} appointmentId={chosenAppointment.id}/>}
+            {isModal === 'assign' && <AssignModal onClose={() => setIsModal('')} appointment={chosenAppointment}/>}
         </section>
     );
 };
 
 AppointmentsList.propTypes = {
     userId: PropTypes.string,
+    tailorId: PropTypes.string,
     review: PropTypes.bool,
+    pending: PropTypes.bool,
 }
 
 export default AppointmentsList

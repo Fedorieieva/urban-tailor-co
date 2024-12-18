@@ -4,6 +4,7 @@ import {useImageUpload} from "@/hooks/handleCloudinary.js";
 import Button from "../../atoms/Button/Button.jsx";
 import {useSelector} from "react-redux";
 import {selectIsLoadingImages} from "@/store/selectors/uploadImage.selectors.js";
+import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const ImageUpload = ({isProfile = false, className}) => {
     const {handleImageUpload} = useImageUpload();
@@ -34,7 +35,7 @@ const ImageUpload = ({isProfile = false, className}) => {
                 </label>
             </Button>
 
-            {isLoadingImages && <p>Uploading...</p>}
+            {isLoadingImages && <Typography variant='text-xxs'>Uploading...</Typography>}
         </div>
     );
 };

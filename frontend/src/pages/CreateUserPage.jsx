@@ -4,15 +4,13 @@ import CreateUser from "@/components/molecules/CreateUser/CreateUser.jsx";
 
 const CreateUserPage = () => {
     return (
-        <>
-            <Banner
-                title='Create new user for your needs'
-                bannerImg="../../public/images/ceate_user.png"
-                fullHeight
-            >
-                <CreateUser/>
-            </Banner>
-        </>
+        <Banner
+            title='Create new user for your needs'
+            bannerImg="../../public/images/ceate_user.png"
+            fullHeight
+        >
+            <CreateUser/>
+        </Banner>
     );
 };
 

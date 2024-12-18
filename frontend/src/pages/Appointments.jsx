@@ -6,7 +6,6 @@ import Container from "@/components/atoms/Container/Container.jsx";
 import Button from "@/components/atoms/Button/Button.jsx";
 import cn from "classnames";
 import style from "@/pages/style.module.scss";
-import Search from "@/components/molecules/Search/Search.jsx";
 
 const Appointments = () => {
     const [tab, setTab] = useState('booking');

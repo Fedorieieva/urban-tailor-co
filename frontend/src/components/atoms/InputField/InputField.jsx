@@ -31,7 +31,6 @@ InputField.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    value: PropTypes.string,
     className: PropTypes.string
 }
 

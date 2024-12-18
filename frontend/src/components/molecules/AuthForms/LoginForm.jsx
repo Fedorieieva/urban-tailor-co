@@ -4,7 +4,6 @@ import * as yup from 'yup';
 import InputField from "../../atoms/InputField/InputField.jsx";
 import Button from "../../atoms/Button/Button.jsx";
 import style from './style.module.scss';
-import {useNavigate} from "react-router-dom";
 import {useLogInUser} from "../../../hooks/handleUser.js";
 import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
