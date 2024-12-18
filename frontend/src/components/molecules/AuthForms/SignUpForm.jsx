@@ -34,7 +34,7 @@ const SignUpForm = () => {
                 <div className={style.inputsWrapper}>
                     <InputField name='username' placeholder='Your Name'/>
                     <InputField name='email' placeholder='E-mail'/>
-                    <InputField name='password' placeholder='Password'/>
+                    <InputField type='password' name='password' placeholder='Password'/>
                 </div>
 
                 <Button

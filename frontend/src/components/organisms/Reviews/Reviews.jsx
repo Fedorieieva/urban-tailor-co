@@ -56,9 +56,6 @@ const Reviews = () => {
                 <Typography variant="text-sm" black capitalize>
                     {review.comment}
                 </Typography>
-                <Typography variant="text-sm" black capitalize>
-                    Rating: {review.rating}/5
-                </Typography>
             </div>
 
             <div className={style.slideFooter}>

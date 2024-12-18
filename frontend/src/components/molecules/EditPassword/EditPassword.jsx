@@ -28,8 +28,8 @@ const EditPassword = () => {
             >
                 <Form className={style.form}>
                     <div className={style.inputsWrapper}>
-                        <InputField name='currentPassword' placeholder='Your current password'/>
-                        <InputField name='newPassword' placeholder='Your new password'/>
+                        <InputField type='password' name='currentPassword' placeholder='Your current password'/>
+                        <InputField type='password' name='newPassword' placeholder='Your new password'/>
                     </div>
 
                     <Button

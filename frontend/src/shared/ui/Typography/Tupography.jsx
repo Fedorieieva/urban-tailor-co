@@ -51,7 +51,7 @@ const Typography = (props) => {
 };
 
 Typography.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     style: PropTypes.object,
     variant: PropTypes.oneOf(Object.keys(tagMap)),

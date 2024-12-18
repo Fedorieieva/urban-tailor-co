@@ -38,7 +38,7 @@ const LoginForm = () => {
             <Form className={style.form}>
                 <div className={style.inputsWrapper}>
                     <InputField name='email' placeholder='E-mail'/>
-                    <InputField name='password' placeholder='Password'/>
+                    <InputField type='password' name='password' placeholder='Password'/>
                 </div>
 
                 <Button type='submit' variant='primary' size='large'>

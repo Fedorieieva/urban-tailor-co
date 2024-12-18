@@ -13,7 +13,6 @@ const AppointmentRow = ({appointment, tailorId}) => {
     const currentUserId = useSelector(selectUser).id;
 
     const tailoringStatuses = [
-        {value: "pending", label: "Pending"},
         {value: "confirmed", label: "Confirmed"},
         {value: "in_progress", label: "In Progress"},
         {value: "canceled", label: "Canceled"},
