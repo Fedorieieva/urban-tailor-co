@@ -1,15 +1,14 @@
 const {PrismaClient} = require('@prisma/client');
+const { v4: uuidv4 } = require('uuid');
 
 const prisma = new PrismaClient();
 
 
-// A `main` function so that we can use async/await
 async function main() {
-    // Create users
     const adminUser = await prisma.user.create({
         data: {
             username: 'Admin User',
-            password: 'securepassword1',
+            password: uuidv4(),
             email: `admin${Date.now()}@example.com`,
             userType: 'admin',
         },
@@ -18,7 +17,7 @@ async function main() {
     const tailorUser = await prisma.user.create({
         data: {
             username: 'Tailor User',
-            password: 'securepassword2',
+            password: uuidv4(),
             email: `tailor${Date.now()}@example.com`,
             userType: 'tailor',
         },
@@ -27,7 +26,7 @@ async function main() {
     const normalUser = await prisma.user.create({
         data: {
             username: 'Normal User',
-            password: 'securepassword3',
+            password: uuidv4(),
             email: `user${Date.now()}@example.com`,
             userType: 'user',
         },
@@ -35,7 +34,6 @@ async function main() {
 
     console.log('Users created:', {adminUser, tailorUser, normalUser});
 
-    // Create a portfolio for the tailor
     const portfolio = await prisma.portfolios.create({
         data: {
             tailorId: tailorUser.id,
@@ -49,7 +47,6 @@ async function main() {
 
     console.log('Portfolio created:', portfolio);
 
-    // Create an appointment for the normal user
     const appointment = await prisma.appointments.create({
         data: {
             appointmentDate: new Date('2024-12-01T10:00:00Z'),
@@ -63,7 +60,6 @@ async function main() {
 
     console.log('Appointment created:', appointment);
 
-    // Create a review for the appointment
     const review = await prisma.reviews.create({
         data: {
             appointmentId: appointment.id,
