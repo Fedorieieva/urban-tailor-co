@@ -1,13 +1,15 @@
+require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const express = require('express');
+const queryCreator = require("../commonHelpers/queryCreator");
+
 
 cloudinary.config({
-    cloud_name: 'dotz9ajec',  // Replace with your Cloudinary Cloud Name
-    api_key: '739998445736963',       // Replace with your Cloudinary API Key
-    api_secret: 'JZKARJUEFuUKVJeaKBiPRNpIp8Q', // Replace with your Cloudinary API Secret
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Define the route and controller function properly
 exports.deleteImageFromCloudinary = async (req, res, next) => {
     const {publicId} = req.body;
 
