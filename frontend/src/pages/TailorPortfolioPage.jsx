@@ -15,7 +15,7 @@ const TailorPortfolioPage = () => {
 
     return (
         <>
-            <Banner title='Your Portfolio' bannerImg='../../public/images/appointments-banner.png'/>
+            <Banner title='Your Portfolio' bannerImg='/images/appointments-banner.png'/>
 
             <Container dark>
                 {!portfolio || Object.keys(portfolio).length === 0 ? (

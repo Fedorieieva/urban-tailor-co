@@ -14,7 +14,7 @@ const TailorAppointments = () => {
 
     return (
         <>
-            <Banner title='Appointments' bannerImg='../../public/images/appointments-banner.png'/>
+            <Banner title='Appointments' bannerImg='/images/appointments-banner.png'/>
 
             <Container dark>
                 <div className={style.tabs}>
