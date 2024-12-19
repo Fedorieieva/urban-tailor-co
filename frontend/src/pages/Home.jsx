@@ -19,7 +19,7 @@ const Home = () => {
         <>
             <Banner
                 title='We Make Clothes That Suit You'
-                bannerImg='./public/images/main-banner.png'
+                bannerImg='/images/main-banner.png'
                 fullHeight
             >
                 <Typography variant='text-sm' className={style.text}>
