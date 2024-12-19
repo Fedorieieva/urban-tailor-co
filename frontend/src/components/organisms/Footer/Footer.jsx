@@ -6,10 +6,8 @@ import SocialMedia from "@/components/molecules/SocialMedia/SocialMedia.jsx";
 import Container from "@/components/atoms/Container/Container.jsx";
 
 const Footer = () => {
-    const footerBg = '../../../../public/images/footer-bg.png';
-
     return (
-        <Container bgImage={footerBg}>
+        <Container bgImage='/images/footer-bg.png'>
             <footer className={style.footer}>
                 <div className={style.info}>
                     <div className={style.corporationInfo}>

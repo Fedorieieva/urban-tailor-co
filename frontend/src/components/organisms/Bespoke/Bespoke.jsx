@@ -9,7 +9,7 @@ const Bespoke = () => {
             <BespokeItem
                 mainTitle='Unique Styles'
                 secondaryTitle='style'
-                img="../../../../public/images/suits1.png"
+                img="/images/suits1.png"
                 text='Lorem ipsum dolor sit amet consectetur. Lectus est
                       senectus lacus vulputate erat tempus aenean adipiscing.
                       Eu massa maecenas lorem massa quis fusce. Eget risus
@@ -20,7 +20,7 @@ const Bespoke = () => {
                 reverse
                 mainTitle='The Craftsman ship'
                 secondaryTitle='Craft'
-                img="../../../../public/images/suits2.png"
+                img="/images/suits2.png"
                 text='Lorem ipsum dolor sit amet consectetur. Lectus est
                       senectus lacus vulputate erat tempus aenean adipiscing.
                       Eu massa maecenas lorem massa quis fusce. Eget risus

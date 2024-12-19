@@ -19,22 +19,22 @@ const Services = () => {
                     <ServicesItem
                         title='Custom Accessories'
                         description='We have a wide range of bow ties which fit everyday fashion as well as special occasions'
-                        icon='../../../../public/images/services1.png'
+                        icon='/images/services1.png'
                     />
                     <ServicesItem
                         title='Custom Tailoring'
                         description='You can choose all details you want, from buttons to pockets and lapels, we can do everything.'
-                        icon='../../../../public/images/services2.png'
+                        icon='/images/services2.png'
                     />
                     <ServicesItem
                         title='Suit Resizing'
                         description='Each our suit is made to your exact measurements and fit your specific body type'
-                        icon='../../../../public/images/services3.png'
+                        icon='/images/services3.png'
                     />
                     <ServicesItem
                         title='Wedding Services'
                         description='You and your groomsmen deserve the sharpest suits. Let us help you create suits for your day.'
-                        icon='../../../../public/images/services4.png'
+                        icon='/images/services4.png'
                     />
                 </div>
             </section>

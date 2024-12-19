@@ -10,7 +10,7 @@ const BookAppointment = () => {
             <section className={style.bookingSection}>
                 <SectionTitle mainTitle='Book your appointment' secondaryTitle='booking' isCentered className={style.title}/>
                 <div className={style.imgWrapper}>
-                    <img src="../../../../public/images/thread.png" alt="thread" className={style.img}/>
+                    <img src="/images/thread.png" alt="thread" className={style.img}/>
                 </div>
 
                 <AppointmentForm className={style.form}/>

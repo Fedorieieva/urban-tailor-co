@@ -10,7 +10,7 @@ const CustomerAppointments = () => {
 
     return (
         <Container light>
-            <Container bgImage='../../../../public/images/appointmentsbg2.png' mask={false}>
+            <Container bgImage='/images/appointmentsbg2.png' mask={false}>
                 <SectionTitle mainTitle='your appointments' secondaryTitle='appointments' className={style.title}/>
 
                 <AppointmentsList userId={userId} review/>

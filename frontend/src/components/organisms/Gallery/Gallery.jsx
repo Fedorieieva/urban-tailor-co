@@ -15,12 +15,12 @@ const Gallery = () => {
                 />
 
                 <div className={style.gallery}>
-                    <img src="../../../../public/images/gallery4.png" alt="img"/>
-                    <img src="../../../../public/images/gallery3.png" alt="img"/>
-                    <img src="../../../../public/images/gallery5.png" alt="img"/>
-                    <img src="../../../../public/images/gallery1.png" alt="img"/>
-                    <img src="../../../../public/images/gallery6.png" alt="img"/>
-                    <img src="../../../../public/images/gallery2.png" alt="img"/>
+                    <img src="/images/gallery4.png" alt="img"/>
+                    <img src="/images/gallery3.png" alt="img"/>
+                    <img src="/images/gallery5.png" alt="img"/>
+                    <img src="/images/gallery1.png" alt="img"/>
+                    <img src="/images/gallery6.png" alt="img"/>
+                    <img src="/images/gallery2.png" alt="img"/>
                 </div>
             </section>
         </Container>

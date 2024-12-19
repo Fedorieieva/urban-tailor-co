@@ -6,11 +6,10 @@ import Search from "@/components/molecules/Search/Search.jsx";
 import SectionTitle from "@/components/molecules/SectionTitle/SectionTitle.jsx";
 
 const Tailors = () => {
-    const bannerBg = '../../../../public/images/thread.png';
 
     return (
         <div className={style.tailorsPage}>
-            <Container bgImage={bannerBg}>
+            <Container bgImage='/images/thread.png'>
                 <Header/>
                 <SectionTitle
                     mainTitle='our masterpiese creators'

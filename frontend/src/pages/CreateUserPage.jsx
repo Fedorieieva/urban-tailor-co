@@ -6,7 +6,7 @@ const CreateUserPage = () => {
     return (
         <Banner
             title='Create new user for your needs'
-            bannerImg="../../public/images/ceate_user.png"
+            bannerImg="/images/ceate_user.png"
             fullHeight
         >
             <CreateUser/>

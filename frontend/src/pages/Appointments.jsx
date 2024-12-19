@@ -12,7 +12,7 @@ const Appointments = () => {
 
     return (
         <>
-            <Banner title='Your Appointments' bannerImg='../../public/images/appointments-banner.png'/>
+            <Banner title='Your Appointments' bannerImg='/images/appointments-banner.png'/>
 
             <Container dark>
                 <div className={style.tabs}>
