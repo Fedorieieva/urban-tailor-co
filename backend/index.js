@@ -17,7 +17,7 @@ let corsOptions;
 
 if (process.env.NODE_ENV === "production") {
     corsOptions = {
-        origin: 'https://social-media-project-f.vercel.app',
+        origin: 'https://urban-tailor-co.vercel.app',
         methods: "GET,POST,PUT,DELETE,PATCH",
         credentials: true,
     };

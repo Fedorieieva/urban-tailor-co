@@ -1,7 +1,6 @@
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const express = require('express');
-const queryCreator = require("../commonHelpers/queryCreator");
 
 
 cloudinary.config({
