@@ -7,9 +7,8 @@ import BestItem from "@/components/organisms/Best/components/BestItem.jsx";
 import style from './style.module.scss';
 
 const Best = () => {
-    const bgImg = '../../../../public/images/scissors.png';
     return (
-        <Container bgImage={bgImg}>
+        <Container bgImage='/images/scissors.png'>
             <section className={style.bestSection}>
                 <BestItem title='Best Price' text='Best price nisl quam nestibulum drana elementum sceisue the onte.'>
                     <Money/>
