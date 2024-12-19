@@ -15,7 +15,7 @@ const About = () => {
             />
 
             <div className={style.about}>
-                <img src="../../../../../public/images/thread.png" alt="thread" className={style.img}/>
+                <img src="/images/thread.png" alt="thread" className={style.img}/>
                 <div className={style.textSection}>
                     <Typography variant='text-3xl' uppercase className={style.aboutTitle}>Discover True
                         Quality</Typography>

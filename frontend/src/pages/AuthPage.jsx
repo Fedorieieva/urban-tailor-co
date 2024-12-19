@@ -9,7 +9,7 @@ const AuthPage = () => {
         <Container light className={style.logInContainer}>
             <Header className={style.header}/>
             <section className={style.logInSection}>
-                <img src="../../public/images/friends.png" alt="frends"/>
+                <img src="/images/friends.png" alt="frends"/>
                 <Auth/>
             </section>
         </Container>
