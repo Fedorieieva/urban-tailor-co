@@ -80,6 +80,7 @@ export const deleteImageFromCloudinary = async (url, userToken) => {
                         Authorization: `${userToken}`,
                     },
                     data: {publicId: imgId},
+                    withCredentials: true,
                 }
             );
             console.log("Image deleted successfully:", response.data);

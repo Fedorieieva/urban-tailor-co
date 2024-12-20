@@ -25,7 +25,8 @@ export const useCreatePortfolio = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -48,7 +49,11 @@ export const useFetchTailorPortfolio = (tailorId) => {
     useEffect(() => {
         const fetchPortfolio = async () => {
             try {
-                const response = await axios.get(`${API_URL}/portfolios/tailor/${tailorId}`);
+                const response = await axios.get(`${API_URL}/portfolios/tailor/${tailorId}`,
+                    {
+                        withCredentials: true,
+                    }
+                );
 
                 setPortfolio(response.data.portfolios[0]);
                 console.log("Got tailor portfolio:", response.data);
@@ -70,7 +75,9 @@ export const useFetchTailorPortfolio = (tailorId) => {
 
 export const fetchPortfolioById = async (portfolioId) => {
     try {
-        const response = await axios.get(`${API_URL}/portfolios/${portfolioId}`);
+        const response = await axios.get(`${API_URL}/portfolios/${portfolioId}`, {
+            withCredentials: true,
+        });
         const portfolio = response.data;
         console.log("Got tailor portfolio:", response.data);
         return portfolio;
@@ -110,6 +117,7 @@ export const useUpdatePortfolio = () => {
                     headers: {
                         Authorization: `${userToken}`,
                     },
+                    withCredentials: true,
                 }
             );
             console.log("Portfolio edited successfully:", response.data);

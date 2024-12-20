@@ -22,7 +22,8 @@ export const useMakeAppointment = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -49,6 +50,7 @@ export const useFetchUserAppointments = (userId, page = 1, limit = 10, sortBy = 
             try {
                 const response = await axios.get(`${API_URL}/appointments/user/${userId}`, {
                     params,
+                    withCredentials: true,
                 });
 
                 setAppointments(response.data.appointments);
@@ -82,6 +84,7 @@ export const useFetchTailorAppointments = (tailorId, page = 1, limit = 10, sortB
             try {
                 const response = await axios.get(`${API_URL}/appointments/tailor/${tailorId}`, {
                     params,
+                    withCredentials: true,
                 });
 
                 setAppointments(response.data.appointments);
@@ -114,7 +117,10 @@ export const useFetchPendingAppointments = (page = 1, limit = 10, sortBy = 'appo
         const getPendingAppointments = async () => {
             try {
                 const response = await axios.get(`${API_URL}/appointments/status`,
-                    {params}
+                    {
+                        params,
+                        withCredentials: true,
+                    }
                 );
 
                 setAppointments(response.data.appointments);
@@ -146,7 +152,8 @@ export const useAssignAppointmentToTailor = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -165,7 +172,8 @@ export const useAssignAppointmentToTailor = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -190,7 +198,8 @@ export const useChangeAppointmentStatus = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 

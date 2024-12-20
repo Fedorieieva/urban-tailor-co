@@ -20,7 +20,8 @@ export const useMakeReview = (appointmentId) => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -47,7 +48,8 @@ export const useUpdateReview = (reviewId) => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -70,6 +72,7 @@ export const useFetchReviews = (page = 1, limit = 10) => {
             try {
                 const response = await axios.get(`${API_URL}/reviews`, {
                     params: {page, limit},
+                    withCredentials: true,
                 });
 
                 setReviews(response.data.reviews);
@@ -95,7 +98,9 @@ export const useFetchReviewByAppointmentId = (appointmentId) => {
     useEffect(() => {
         const fetchReviewByAppointmentId = async () => {
             try {
-                const response = await axios.get(`${API_URL}/reviews/appointment/${appointmentId}`);
+                const response = await axios.get(`${API_URL}/reviews/appointment/${appointmentId}`, {
+                    withCredentials: true,
+                });
 
                 setReview(response.data);
                 console.log("Fetched review successfully:", response.data);
@@ -118,7 +123,9 @@ export const useFetchReviewByAppointmentId = (appointmentId) => {
 
 export const fetchUserByReview = async (reviewId) => {
     try {
-        const response = await axios.get(`${API_URL}/reviews/get-user/${reviewId}`);
+        const response = await axios.get(`${API_URL}/reviews/get-user/${reviewId}`, {
+            withCredentials: true,
+        });
         const portfolio = response.data;
         console.log("Got user by review:", response.data);
         return portfolio;

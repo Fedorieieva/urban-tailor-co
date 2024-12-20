@@ -20,6 +20,9 @@ export const useCreateUser = (isAdminCreating = false) => {
                     email: values.email,
                     username: values.username,
                     userType: values.userType || "user",
+                },
+                {
+                    withCredentials: true,
                 }
             );
 
@@ -44,7 +47,9 @@ export const useLogInUser = () => {
     const fetchAuth = async (credentials) => {
         dispatch(actionUserLoader(true));
         try {
-            const response = await axios.post(`${API_URL}/users/login`, credentials);
+            const response = await axios.post(`${API_URL}/users/login`, credentials, {
+                withCredentials: true,
+            });
             console.log(response.data);
 
             if (response.data) {
@@ -65,7 +70,9 @@ export const useLogInUser = () => {
 
     const fetchUser = async (id) => {
         try {
-            const response = await axios.get(`${API_URL}/users/${id}`);
+            const response = await axios.get(`${API_URL}/users/${id}`, {
+                withCredentials: true,
+            });
 
             if (response.data) {
                 const user = response.data;
@@ -92,7 +99,9 @@ export const useFetchUser = (userId) => {
 
     const fetchUserById = useCallback(async () => {
         try {
-            const response = await axios.get(`${API_URL}/users/${userId}`);
+            const response = await axios.get(`${API_URL}/users/${userId}`, {
+                withCredentials: true,
+            });
             setUser(response.data);
         } catch (error) {
             console.error(
@@ -133,7 +142,8 @@ export const useEditUserInfo = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -165,7 +175,8 @@ export const useEditUserPassword = () => {
                 {
                     headers: {
                         Authorization: `${userToken}`
-                    }
+                    },
+                    withCredentials: true,
                 }
             );
 
@@ -188,7 +199,9 @@ export const useFetchUsersByRole = (role) => {
 
         const getAllUsers = async () => {
             try {
-                const response = await axios.get(`${API_URL}/users/role/${role}`);
+                const response = await axios.get(`${API_URL}/users/role/${role}`, {
+                    withCredentials: true,
+                });
                 setUsers(response.data);
             } catch (error) {
                 console.error("Error fetching users:", error.response?.data || error.message);
