@@ -74,6 +74,7 @@ exports.getReviewByAppointmentId = async (req, res, next) => {
 
         res.status(200).json(review);
     } catch (error) {
+        console.error(error);
         next(error);
     }
 };
