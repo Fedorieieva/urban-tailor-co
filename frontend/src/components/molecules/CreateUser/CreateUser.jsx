@@ -48,7 +48,7 @@ const CreateUser = () => {
                             placeholder="Select User Role"
                         />
 
-                        <InputField name='password' placeholder='Enter password'/>
+                        <InputField type='password' name='password' placeholder='Enter password'/>
                     </div>
 
                     <Button type='submit'>
