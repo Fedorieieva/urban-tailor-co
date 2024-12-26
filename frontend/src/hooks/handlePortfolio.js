@@ -4,6 +4,7 @@ import {selectAuthUserToken, selectUploadedPostImages, selectUser} from "@/store
 import axios from "axios";
 import {API_URL} from "@/config/config.js";
 import {actionClearPostImageSrc} from "@/store/reducers/uploadedImage.slice.js";
+import {deleteImageFromCloudinary} from "@/hooks/handleCloudinary.js";
 
 export const useCreatePortfolio = () => {
     const userToken = useSelector(selectAuthUserToken);
@@ -135,3 +136,34 @@ export const useUpdatePortfolio = () => {
 
     return {editPortfolio, isEditing};
 };
+
+export const useDeletePortfolio = () => {
+    const userToken = useSelector(selectAuthUserToken);
+
+    const deletePortfolio = async (portfolioId, portfolioImgs) => {
+        try {
+            for (const imgUrl of portfolioImgs) {
+                await deleteImageFromCloudinary(imgUrl, userToken);
+            }
+
+            const response = await axios.delete(
+                `${API_URL}/portfolios/${portfolioId}`,
+                {
+                    headers: {
+                        Authorization: `${userToken}`,
+                    },
+                    withCredentials: true,
+                }
+            );
+            console.log("Portfolio deleted successfully:", response.data);
+
+        } catch (error) {
+            console.error(
+                "An error occurred while editing portfolio:",
+                error.response?.data || error.message
+            );
+        }
+    }
+
+    return deletePortfolio;
+}

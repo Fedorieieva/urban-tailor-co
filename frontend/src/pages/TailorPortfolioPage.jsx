@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {selectUser} from "@/store/selectors/index.js";
 import {useFetchTailorPortfolio} from "@/hooks/handlePortfolio.js";
 import style from './style.module.scss';
+import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const TailorPortfolioPage = () => {
     const tailorId = useSelector(selectUser).id;
@@ -24,7 +25,7 @@ const TailorPortfolioPage = () => {
                         <CreatePortfolioForm/>
                     </>
                 ) : (
-                    <Portfolio tailorId={tailorId} />
+                    <Portfolio tailorId={tailorId} portfolioProp={portfolio}/>
                 )}
             </Container>
         </>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {
     useFetchTailorPortfolio,
     useUpdatePortfolio,
-    fetchPortfolioById
+    fetchPortfolioById, useDeletePortfolio
 } from "@/hooks/handlePortfolio.js";
 import {useFetchUser} from "@/hooks/handleUser.js";
 import {useSelector} from "react-redux";
@@ -19,12 +19,15 @@ import ImageUpload from "@/components/molecules/ImageUpload/ImageUpload.jsx";
 import Typography from "@/shared/ui/Typography/Tupography.jsx";
 import {deleteImageFromCloudinary} from "@/hooks/handleCloudinary.js";
 import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
+import {useNavigate} from "react-router-dom";
 
-const Portfolio = ({tailorId}) => {
+const Portfolio = ({tailorId, portfolioProp}) => {
+    const navigate = useNavigate();
     const userToken = useSelector(selectAuthUserToken);
     const currentUser = useSelector(selectUser).id;
     const tailor = useFetchUser(tailorId);
-    const initialPortfolio = useFetchTailorPortfolio(tailorId);
+    const initialPortfolio = portfolioProp ?? useFetchTailorPortfolio(tailorId);
+    const deletePortfolio = useDeletePortfolio();
     const [portfolio, setPortfolio] = useState(initialPortfolio || {});
 
     useEffect(() => {
@@ -71,15 +74,26 @@ const Portfolio = ({tailorId}) => {
         }
     };
 
+    const handleDeletePortfolio = async () => {
+        await deletePortfolio(portfolio.id, portfolio.imgUrls)
+        navigate('/tailor-appointments');
+    }
+
     useEffect(() => {
         if (!isLoadingImages && isEditing) {
             handleEditCompletion();
         }
     }, [isLoadingImages]);
 
-    if (!tailor || !portfolio || Object.keys(portfolio).length === 0) {
+    if (Object.keys(portfolio).length === 0) {
         return <Typography variant='text-xl' capitalize>
-            we are sorry, the tailor didn't fill out his portfolio yet
+            we are sorry, the tailor didn&#39;t fill out his portfolio yet
+        </Typography>;
+    }
+
+    if (!tailor || !portfolio) {
+        return <Typography variant='text-xl' capitalize>
+            loading...
         </Typography>;
     }
 
@@ -96,7 +110,11 @@ const Portfolio = ({tailorId}) => {
                     >
                         <Edit/>
                     </Button>
-                    <Button variant="transparent" aria-label="Delete Portfolio">
+                    <Button
+                        variant="transparent"
+                        onClick={handleDeletePortfolio}
+                        aria-label="Delete Portfolio"
+                    >
                         <Delete/>
                     </Button>
                 </div>
@@ -113,6 +131,7 @@ const Portfolio = ({tailorId}) => {
                     setContent={setDescription}
                     onClick={handleEditCompletion}
                     isEditing={isEditing}
+                    className={style.description}
                 />
             </section>
 
