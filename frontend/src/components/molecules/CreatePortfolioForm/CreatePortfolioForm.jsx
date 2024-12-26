@@ -7,8 +7,9 @@ import style from './style.module.scss';
 import Button from "@/components/atoms/Button/Button.jsx";
 import {useCreatePortfolio} from "@/hooks/handlePortfolio.js";
 
-const CreatePortfolioForm = () => {
+const CreatePortfolioForm = ({onSuccess}) => {
     const isLoadingImages = useSelector(selectIsLoadingImages);
+    const createPortfolio = useCreatePortfolio();
     const initialValues = {
         description: ''
     };
@@ -17,7 +18,19 @@ const CreatePortfolioForm = () => {
         description: yup.string().required('Description is required'),
     });
 
-    const handleSubmit = useCreatePortfolio();
+    // const handleSubmit = async (values, {resetForm}) => {
+    const handleSubmit = async (values) => {
+        try {
+            // await createPortfolio(values, resetForm);
+            await createPortfolio(values);
+
+            if (onSuccess) {
+                onSuccess();
+            }
+        } catch (error) {
+            console.error("Error creating portfolio:", error);
+        }
+    };
 
     return (
         <Formik

@@ -12,7 +12,8 @@ export const useCreatePortfolio = () => {
     const imgUrls = useSelector(selectUploadedPostImages);
     const dispatch = useDispatch();
 
-    return async (values, {resetForm}) => {
+    // return async (values, {resetForm}) => {
+    return async (values) => {
         const portfolioData = {
             tailorId,
             imgUrls,
@@ -32,7 +33,7 @@ export const useCreatePortfolio = () => {
             );
 
             console.log("Portfolio made successfully:", response.data)
-            resetForm();
+            // resetForm();
         } catch (error) {
             console.error(
                 "An error occurred while making a portfolio:",
@@ -44,7 +45,7 @@ export const useCreatePortfolio = () => {
     }
 }
 
-export const useFetchTailorPortfolio = (tailorId) => {
+export const useFetchTailorPortfolio = (tailorId,triggerRerender) => {
     const [portfolio, setPortfolio] = useState({});
 
     useEffect(() => {
@@ -69,7 +70,7 @@ export const useFetchTailorPortfolio = (tailorId) => {
         if (tailorId) {
             fetchPortfolio();
         }
-    }, [tailorId]);
+    }, [tailorId, triggerRerender]);
 
     return portfolio;
 }

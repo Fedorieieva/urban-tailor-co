@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Banner from "@/components/organisms/Banner/Banner.jsx";
 import Container from "@/components/atoms/Container/Container.jsx";
 import CreatePortfolioForm from "@/components/molecules/CreatePortfolioForm/CreatePortfolioForm.jsx";
@@ -12,7 +12,15 @@ import Typography from "@/shared/ui/Typography/Tupography.jsx";
 
 const TailorPortfolioPage = () => {
     const tailorId = useSelector(selectUser).id;
-    const portfolio = useFetchTailorPortfolio(tailorId);
+    const [triggerRerender, setTriggerRerender] = useState(false);
+    // const portfolio = useFetchTailorPortfolio(tailorId);
+    const portfolio = useFetchTailorPortfolio(tailorId, triggerRerender);
+
+    // Callback to toggle the state
+    const handleFormSubmitSuccess = () => {
+        setTriggerRerender((prev) => !prev);
+        console.log(triggerRerender)
+    };
 
     return (
         <>
@@ -22,7 +30,7 @@ const TailorPortfolioPage = () => {
                 {!portfolio || Object.keys(portfolio).length === 0 ? (
                     <>
                         <ImageUpload className={style.upload}/>
-                        <CreatePortfolioForm/>
+                        <CreatePortfolioForm onSuccess={handleFormSubmitSuccess}/>
                     </>
                 ) : (
                     <Portfolio tailorId={tailorId} portfolioProp={portfolio}/>
