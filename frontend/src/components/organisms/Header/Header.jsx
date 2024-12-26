@@ -8,7 +8,7 @@ import Button from "@/components/atoms/Button/Button.jsx";
 import Logo from "@/components/molecules/Logo/Logo.jsx";
 import cn from 'classnames';
 import PropTypes from "prop-types";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAuthUserToken, selectUser} from "@/store/selectors/index.js";
 import {actionClearUserData} from "@/store/reducers/auth.reducer.js";
@@ -16,6 +16,7 @@ import UserHeader from "@/components/molecules/UserHeader/UserHeader.jsx";
 
 const Header = ({className}) => {
     const location = useLocation();
+    const navigate = useNavigate();
     const isSignInPage = location.pathname === '/sign-in';
     const dispatch = useDispatch();
     const userToken = useSelector(selectAuthUserToken);
@@ -68,7 +69,7 @@ const Header = ({className}) => {
                 {!isSignInPage && (
                     <>
                         <nav className={style.nav}>
-                            <Button to='/' variant='transparent'>Home</Button>
+                            <Button onClick={() => navigate('/')} variant='transparent'>Home</Button>
 
                             {userToken && user.userType === 'user' && <Button to='/appointments' variant='transparent'>Appointments</Button>}
                             {userToken && user.userType === 'user' && <Button to='/tailors' variant='transparent'>tailors</Button>}
