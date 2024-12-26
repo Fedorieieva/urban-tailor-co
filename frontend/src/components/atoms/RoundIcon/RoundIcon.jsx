@@ -4,7 +4,7 @@ import cn from 'classnames';
 import style from "./style.module.scss";
 
 const RoundIcon = ({src, size = 'large'}) => {
-    const avatar = src || './public/images/icons/user.svg';
+    const avatar = src || '/images/icons/user.svg';
 
     const avatarClasses = cn(
         style.userAvatarWrapper,
